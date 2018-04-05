@@ -4,6 +4,11 @@
 
 //Primary Variable Storage
 
+var localLocation = 0;
+var marsWeather = 0;
+var lolcalWeather = 0;
+var marsPhoto = 0;
+
 
 
 //AJAX call functions
@@ -21,6 +26,12 @@
 
     //Function to initialize all page content
     function FXstart (){
+
+    };
+
+    //Function to reset page back to location selection
+    function FXresest (){
+
 
     };
 
@@ -45,10 +56,19 @@
     };
 
     //Compute delta
+    function FXdelta () {
         //compute deltaTemp
         //compute deltaWeather
         //compute deltaSeason
+    };
 
+    //Write delta content to DOM
+    function FXdeltaWrite () {
+        //write comparison 1
+        //write comparison 2
+        //write comparison 3
+
+    };
 
 
 //Initialize
