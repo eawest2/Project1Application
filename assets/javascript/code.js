@@ -28,8 +28,8 @@ var marsPhoto = 0;
         
         // AJAX call to the OpenWeatherMap API
         $.ajax({
-        url: queryURL,
-        method: "GET"
+            url: queryURL,
+            method: "GET"
         })
         // Stores all of the retrieved data inside of an object called "response"
         .then(function(response) {
@@ -41,6 +41,23 @@ var marsPhoto = 0;
     } 
 
     //Mars call function
+    function displayMarsWeather() {
+        // The URL to query the MAAS2
+        var queryURL = "https://api.maas2.jiinxt.com/latest"
+
+        // AJAX call to MAAS2 API
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        // Stores all of the retrieved data inside of an object called "response"
+        .then(function(response) {
+            console.log("queryURL check" + queryURL);
+            console.log("result object check" + response);
+            // Assigns response object to global variable
+            marsWeather = response;
+        });
+    }
 
     //Mars photo call function
 
@@ -77,6 +94,8 @@ var marsPhoto = 0;
         $(".weather").text(response.weather.description);
 
         //write mars info
+        $(".marsTemp").text("Temperature (C) " + response.max_temp);
+        $(".marsWeather").text(response.atmo_opacity);
         //write mars photo
 
     };
