@@ -16,26 +16,29 @@ var marsPhoto = 0;
     //Geolocation ** STRETCH GOAL**
 
     //Open Weather Call function
-    // This is our API key and variables for the queryURL
-    var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
-    var city = "";
-    var country = "";
+    function displayLocalWeather() {
+        // This is our API key and variables for the queryURL
+        var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
+        var city = "";
+        var country = "";
 
-    // The URL to query the database
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-      "q=" + city + country + "&units=imperial&appid=" + APIKey;
-      
-    // AJAX call to the OpenWeatherMap API
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-      // Stores all of the retrieved data inside of an object called "response"
-      .then(function(response) {
-        console.log("queryURL check" + queryURL);
-        console.log("result object check" + response);
-        // Assigns response object to global variable
-        localWeather = response; 
+        // The URL to query the database
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+        "q=" + city + country + "&units=imperial&appid=" + APIKey;
+        
+        // AJAX call to the OpenWeatherMap API
+        $.ajax({
+        url: queryURL,
+        method: "GET"
+        })
+        // Stores all of the retrieved data inside of an object called "response"
+        .then(function(response) {
+            console.log("queryURL check" + queryURL);
+            console.log("result object check" + response);
+            // Assigns response object to global variable
+            localWeather = response;
+        });
+    } 
 
     //Mars call function
 
