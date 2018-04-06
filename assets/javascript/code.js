@@ -119,3 +119,4 @@ var marsPhoto = 0;
 //Initialize
 
 FXstart();
+displayMarsWeather();
