@@ -16,27 +16,25 @@ var marsPhoto = 0;
     //Geolocation ** STRETCH GOAL**
 
     //Open Weather Call function
-    // This is our API key
+    // This is our API key and variables for the queryURL
     var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
     var city = "";
     var country = "";
 
-    // Here we are building the URL we need to query the database
+    // The URL to query the database
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
       "q=" + city + country + "&units=imperial&appid=" + APIKey;
       
-    // Here we run our AJAX call to the OpenWeatherMap API
+    // AJAX call to the OpenWeatherMap API
     $.ajax({
       url: queryURL,
       method: "GET"
     })
-      // We store all of the retrieved data inside of an object called "response"
+      // Stores all of the retrieved data inside of an object called "response"
       .then(function(response) {
-        // Log the queryURL
-        console.log(queryURL);
-        // Log the resulting object
-        console.log(response);
-        // Assigns the response object to global variable
+        console.log("queryURL check" + queryURL);
+        console.log("result object check" + response);
+        // Assigns response object to global variable
         localWeather = response; 
 
     //Mars call function
