@@ -16,7 +16,7 @@ var marsPhoto = 0;
     //Geolocation ** STRETCH GOAL**
 
     //Open Weather Call function
-    function displayLocalWeather() {
+    function FXdisplayLocalWeather() {
         // This is our API key and variables for the queryURL
         var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
         // Captured from button click
@@ -55,7 +55,7 @@ var marsPhoto = 0;
     } 
 
     //Mars call function
-    function displayMarsWeather() {
+    function FXdisplayMarsWeather() {
         // The URL to query the MAAS2
         var queryURL = "https://api.maas2.jiinxt.com/latest"
 
@@ -78,6 +78,26 @@ var marsPhoto = 0;
     }
 
     //Mars photo call function
+    function FXdisplayMarsImage() {
+        // This is our API key and variables for the Mars Photos queryURL
+        var currentSOL = "";
+        var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
+        var queryURL = 
+        "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=" + currentSOL + "&api_key=" + APIKey;
+
+        // AJAX call to Mars Photos API
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        // Stores all of the retrieved data inside of an object called "response"
+        .then(function(response) {
+            console.log("queryURL check" + queryURL);
+            console.log("result object check" + response);
+            // Assigns response object to global variable
+            marsPhoto = response;
+        });
+    }
 
 
 //Function Declaration
@@ -140,5 +160,5 @@ var marsPhoto = 0;
 //Initialize
 
 FXstart();
-displayLocalWeather();
-displayMarsWeather();
+FXdisplayLocalWeather();
+FXdisplayMarsWeather();
