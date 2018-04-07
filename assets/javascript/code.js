@@ -160,7 +160,8 @@ var marsPhoto = 0;
 //Initialize
 
 FXstart();
-displayMarsWeather();
+FXdisplayMarsWeather();
+
 //howler player function//
 $(function(){
 
