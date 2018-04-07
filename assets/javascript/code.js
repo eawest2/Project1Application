@@ -162,6 +162,13 @@ var marsPhoto = 0;
 FXstart();
 displayMarsWeather();
 //howler player function//
+
+var sound = new Howl({
+    src: ['assets/audio/8BallAitken_CycloneCountry.mp3'],
+    volume: 0.8
+  });
+  
+  sound.play();
 $(function(){
 
 	var howler_example = new Howl({
@@ -198,6 +205,5 @@ $(function(){
 		}
 		howler_example.volume(vol);
 	});
-
 });
 });
