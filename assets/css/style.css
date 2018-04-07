@@ -1,6 +1,40 @@
 *{
 } 
 
+body{
+  background-color: #993c33;
+}
+
+a{
+  text-decoration: none;
+}
+
+.header{
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .jumbotron {
   background-image:url("../images/planet.jpg");
+  color: white;
+}
+
+.btn{
+  margin-bottom: 20px;
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.btn:hover{
+  background-color: dimgray;
+}
+
+#main-content{
+  margin-bottom: 20px;
+}
+
+#more-info{
+  margin-bottom: 20px;
 }
