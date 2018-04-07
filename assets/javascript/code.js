@@ -9,6 +9,38 @@ var marsWeather = 0;
 var localWeather = 0;
 var marsPhoto = 0;
 
+//Populate city buttons
+var cities = {
+    c1: {
+        city: "London",
+        nation: "England",
+    },
+
+    c2: {
+        city: "New York",
+        nation: "United States"
+    },
+
+    c3: {
+        city: "Los Angeles",
+        nation: "United States"
+    },
+
+    // = ["London", "New York", "Los Angeles", "São Paulo", "Sydney", "Tokyo", "Cape Town", "Beijing", "New Delhi", "Moscow", "Cairo", "Buenos Aires"];
+};
+
+var objArray = Object.keys(cities); //puts object properties into an array
+var objLen = objArray.length; //length of array (aka number of cities)
+console.log(objLen);
+
+for (i=1; i<=objLen; i++){
+    var cityPointer = 'c' + i;
+    console.log(cityPointer);
+    $("#city-buttons").append(
+        `<button id='${cities[cityPointer].city}'>${cities[cityPointer].city}</button>
+    `);
+};
+
 
 
 //AJAX call functions
