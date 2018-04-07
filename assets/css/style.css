@@ -1,40 +1,52 @@
 *{
+  color: white;
 } 
 
 body{
   background-color: #993c33;
 }
 
-a{
+a:link,a:visited{
   text-decoration: none;
+  color: white;
+  padding-left: 7px;
+  padding-right: 4px;
+}
+
+#about{
+  border-left: 1px solid white;
+}
+
+a:hover{
+  color:darkgray;
 }
 
 .header{
-  color: white;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
+.display-4,#launch{
+  font-family: 'Orbitron', sans-serif;
+}
+
 .jumbotron {
   background-image:url("../images/planet.jpg");
-  color: white;
+}
+
+.card,.btn{
+  background-color: black;
 }
 
 .btn{
   margin-bottom: 20px;
-  background-color: black;
-  color: white;
-  border: none;
+  border: 1px solid white;
 }
 
 .btn:hover{
   background-color: dimgray;
 }
 
-#main-content{
-  margin-bottom: 20px;
-}
-
-#more-info{
+#main-content,#more-info{
   margin-bottom: 20px;
 }
