@@ -9,6 +9,59 @@ var marsWeather = 0;
 var localWeather = 0;
 var marsPhoto = 0;
 
+$("#launch").on("click", function(){
+    $("#main-content").html(
+        `<div class="row">
+            <div class="col" id="local-weather">
+                <div class="card" style="width: 100%">
+                    <div class="card-body">
+                        <h5 class="card-title">Local Weather</h5>
+                        <ul>
+                            <li>Wind Speed: 10</li>
+                            <li>Temp: 70</li>
+                            <li>Sunlight: All</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" id="mars-weather">
+                <div class="card" style="width: 100%">
+                    <div class="card-body">
+                        <h5 class="card-title">Mars Weather</h5>
+                        <ul>
+                            <li>Wind Speed: 60</li>
+                            <li>Temp: -100</li>
+                            <li>Sunlight: None</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="weather-comparison">
+            <div class="card" style="width: 100%">
+                <div class="card-body">
+                    <h5 class="card-title">Weather Comparison</h5>
+                    <ul class="text-left">
+                        <li>Tornado</li>
+                        <li>Antartica</li>
+                        <li>Black void</li>
+                    </ul>
+                </div>
+            </div>
+        </div>`
+        // <button class="btn btn-default" id="relaunch">Re-Launch</button>
+    );
+});
+
+// $("#relaunch").on("click", function(){
+//     console.log("hi");
+//     // $("#main-content").html(
+//     //     `<button class="btn btn-primary btn-lg" id="launch">Launch</button>`
+//     // );
+// });
+
 
 
 //AJAX call functions
