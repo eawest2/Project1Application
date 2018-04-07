@@ -187,6 +187,7 @@ var marsPhoto = 0;
 FXstart();
 displayMarsWeather();
 //howler player function//
+
 $(function(){
 
 	var howler_example = new Howl({
@@ -223,6 +224,5 @@ $(function(){
 		}
 		howler_example.volume(vol);
 	});
-
 });
 });
