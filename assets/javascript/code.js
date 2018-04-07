@@ -19,12 +19,22 @@ var marsPhoto = 0;
     function displayLocalWeather() {
         // This is our API key and variables for the queryURL
         var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
-        var city = "";
-        var country = "";
+        // Captured from button click
+        var location = "city,country";
 
         // The URL to query the database
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-        "q=" + city + country + "&units=imperial&appid=" + APIKey;
+        "q=" + location + "&units=imperial&appid=" + APIKey;
+
+        // Test cities urls
+        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+        // "q=" + "Raleigh,USA" + "&units=imperial&appid=" + APIKey;
+
+        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+        // "q=" + "Asheville,USA" + "&units=imperial&appid=" + APIKey;
+        
+        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+        // "q=" + "Austin,USA" + "&units=imperial&appid=" + APIKey;
         
         // AJAX call to the OpenWeatherMap API
         $.ajax({
@@ -37,6 +47,10 @@ var marsPhoto = 0;
             console.log("result object check" + response);
             // Assigns response object to global variable
             localWeather = response;
+
+            // Testing responses
+            console.log("OW Temperature (F) check: " + response.main.temp)
+            console.log("OW weather description check: " + response.weather[0].description)
         });
     } 
 
@@ -56,6 +70,10 @@ var marsPhoto = 0;
             console.log("result object check" + response);
             // Assigns response object to global variable
             marsWeather = response;
+
+            // Testing responses
+            console.log("MAAS2 Temperature (C) check " + response.max_temp);
+            console.log("MAAS2 Atmo check " + response.atmo_opacity);
         });
     }
 
@@ -91,10 +109,13 @@ var marsPhoto = 0;
 
         //write weather info
         $(".temp").text("Temperature (F) " + response.main.temp);
+  
         $(".weather").text(response.weather.description);
+
 
         //write mars info
         $(".marsTemp").text("Temperature (C) " + response.max_temp);
+        
         $(".marsWeather").text(response.atmo_opacity);
         //write mars photo
 
@@ -119,4 +140,5 @@ var marsPhoto = 0;
 //Initialize
 
 FXstart();
+displayLocalWeather();
 displayMarsWeather();
