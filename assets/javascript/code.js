@@ -4,8 +4,7 @@ $( document ).ready(function() {
 
 //Primary Variable Storage
 
-var localLon = 0;
-var localLat = 0;
+var localLocation = 0;
 var marsWeather = 0;
 var localWeather = 0;
 var marsPhoto = 0;
@@ -19,12 +18,12 @@ var marsPhoto = 0;
 
     //Open Weather Call function
     function FXdisplayLocalWeather() {
-        console.log("inside displayLocalWeather: " + localLat);
+        console.log("inside displayLocalWeather: " + localLocation)
         // This is our API key and variables for the queryURL
         var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
         // Captured from button click
-        var lat = localLat;
-        var lon = localLon;
+        var lat = localLocation.latitude;
+        var lon = localLocation.longitude;
 
         // The URL to query the database
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat={" + lat + "}&lon={" + lon + "}&appid=" + APIKey;
@@ -62,7 +61,6 @@ var marsPhoto = 0;
 
     //Mars call function
     function FXdisplayMarsWeather() {
-        FXweatherGeolocation ();
         // The URL to query the MAAS2
         var queryURL = "https://api.maas2.jiinxt.com/latest"
 
@@ -142,11 +140,12 @@ var marsPhoto = 0;
                 console.log(`Latitude : ${crd.latitude}`);
                 console.log(`Longitude: ${crd.longitude}`);
 
+                localLocation = {
+                    latitude: crd.latitude,
+                    longitude: crd.longitude
                 
-                localLatitude = crd.latitude;
-                localLongitude = crd.longitude;
-                
-                console.log("localLocationInside Function" + localLon);
+                };
+                console.log("localLocationInside Function" + localLocation);
             };
             
             function error(err) {
@@ -155,7 +154,7 @@ var marsPhoto = 0;
             
             navigator.geolocation.getCurrentPosition(success, error, options);
             
-            console.log("localLocationOutsideFunction" + localLat);
+            console.log("localLocationOutsideFunction" + localLocation);
 
         };
 
@@ -194,7 +193,7 @@ var marsPhoto = 0;
 
 //Initialize
 FXstart();
-
+FXweatherGeolocation ();
 FXdisplayLocalWeather();
 FXdisplayMarsWeather();
 
