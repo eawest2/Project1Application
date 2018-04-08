@@ -193,7 +193,11 @@ var marsPhoto = 0;
 //Initialize
 
 FXstart();
-FXdisplayMarsWeather();
+FXweatherGeolocation();
+$("#launch").on("click", function() {
+    FXdisplayLocalWeather();
+    FXdisplayMarsWeather();
+});
 
 //howler player function//
 
