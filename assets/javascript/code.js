@@ -14,13 +14,12 @@ var marsPhoto = 0;
 
 //AJAX call functions
 
-    //Geolocation ** STRETCH GOAL**
-    // //Geolocate call function
+    // Geolocation call function
     // function FXweatherGeolocation () {
-    //     // The URL to query the MAAS2
+    //     // The URL to query the ip-API
     //     var queryURL = "http://ip-api.com/json";
 
-    //     // AJAX call to MAAS2 API
+    //     // AJAX call to ip-API
     //     $.ajax({
     //         url: queryURL,
     //         method: "GET"
@@ -198,9 +197,10 @@ FXstart();
 FXweatherGeolocation();
 $("#launch").on("click", function() {
     FXdisplayLocalWeather();
+    FXdisplayMarsWeather();
 });
-// FXdisplayLocalWeather();
-// FXdisplayMarsWeather();
+
+
 
 
 
