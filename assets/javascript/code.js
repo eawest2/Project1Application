@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
 //Primary Variable Storage
 
-var localLocation = 0;
+var localLocation = {};
 var marsWeather = 0;
 var localWeather = 0;
 var marsPhoto = 0;
@@ -39,22 +39,9 @@ var marsPhoto = 0;
     function FXdisplayLocalWeather() {
         // This is our API key and variables for the queryURL
         var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
-        // Captured from button click
-        var location = "city,country";
 
         // The URL to query the database
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-        "q=" + location + "&units=imperial&appid=" + APIKey;
-
-        // Test cities urls
-        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-        // "q=" + "Raleigh,USA" + "&units=imperial&appid=" + APIKey;
-
-        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-        // "q=" + "Asheville,USA" + "&units=imperial&appid=" + APIKey;
-        
-        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-        // "q=" + "Austin,USA" + "&units=imperial&appid=" + APIKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + localLocation.lat + "&lon=" + localLocation.lon + "&appid=" + APIKey;
         
         // AJAX call to the OpenWeatherMap API
         $.ajax({
@@ -69,8 +56,9 @@ var marsPhoto = 0;
             localWeather = response;
 
             // Testing responses
-            console.log("OW Temperature (F) check: " + response.main.temp)
-            console.log("OW weather description check: " + response.weather[0].description)
+            console.log("OW object check: " + localWeather);
+            console.log("OW Temperature (K) check: " + localWeather.main.temp)
+            console.log("OW weather description check: " + localWeather.weather[0].description)
         });
     } 
 
