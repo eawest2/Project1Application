@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
 //Primary Variable Storage
 
-var localLocation = 0;
+var localLocation = {};
 var marsWeather = 0;
 var localWeather = 0;
 var marsPhoto = 0;
@@ -15,31 +15,36 @@ var marsPhoto = 0;
 //AJAX call functions
 
     //Geolocation ** STRETCH GOAL**
+    // //Geolocate call function
+    // function FXweatherGeolocation () {
+    //     // The URL to query the MAAS2
+    //     var queryURL = "http://ip-api.com/json";
+
+    //     // AJAX call to MAAS2 API
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     })
+    //     // Stores all of the retrieved data inside of an object called "response"
+    //     .then(function(response) {
+    //         console.log("queryURL check: " + queryURL);
+    //         console.log("result object check: " + response);
+    //         // Assigns response object to global variable     
+    //         localLocation = response;
+    //         console.log("localLocation: " + localLocation);
+    //         console.log("ip-api lat" + localLocation.lat);
+    //         console.log("ip-api lon" + localLocation.lon);
+    //     });
+    // }
 
     //Open Weather Call function
     function FXdisplayLocalWeather() {
-        console.log("inside displayLocalWeather: " + localLocation)
+        console.log("Testing localLocation variable inside LocalWeather(): " + localLocation);
         // This is our API key and variables for the queryURL
         var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
-        // Captured from button click
-        var lat = localLocation.latitude;
-        var lon = localLocation.longitude;
 
         // The URL to query the database
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat={" + lat + "}&lon={" + lon + "}&appid=" + APIKey;
-        
-        // "https://api.openweathermap.org/data/2.5/weather?" +
-        // "q=" + location + "&units=imperial&appid=" + APIKey;
-
-        // Test cities urls
-        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-        // "q=" + "Raleigh,USA" + "&units=imperial&appid=" + APIKey;
-
-        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-        // "q=" + "Asheville,USA" + "&units=imperial&appid=" + APIKey;
-        
-        // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-        // "q=" + "Austin,USA" + "&units=imperial&appid=" + APIKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + localLocation.lat + "&lon=" + localLocation.lon + "&appid=" + APIKey;
         
         // AJAX call to the OpenWeatherMap API
         $.ajax({
@@ -54,8 +59,9 @@ var marsPhoto = 0;
             localWeather = response;
 
             // Testing responses
-            console.log("OW Temperature (F) check: " + response.main.temp)
-            console.log("OW weather description check: " + response.weather[0].description)
+            console.log("OW object check: " + localWeather);
+            console.log("OW Temperature (K) check: " + localWeather.main.temp)
+            console.log("OW weather description check: " + localWeather.weather[0].description)
         });
     } 
 
@@ -77,8 +83,8 @@ var marsPhoto = 0;
             marsWeather = response;
 
             // Testing responses
-            console.log("MAAS2 Temperature (C) check " + response.max_temp);
-            console.log("MAAS2 Atmo check " + response.atmo_opacity);
+            console.log("MAAS2 Temperature (C) check " + marsWeather.max_temp);
+            console.log("MAAS2 Atmo check " + marsWeather.atmo_opacity);
         });
     }
 
@@ -104,8 +110,6 @@ var marsPhoto = 0;
         });
     }
 
-    FXdisplayMarsImage();
-
 
 //Function Declaration
 
@@ -126,26 +130,27 @@ var marsPhoto = 0;
 
         };
 
-        //Geolocate user endpoint
+        
         function FXweatherGeolocation (){
             var options = {
-                enableHighAccuracy: true, 
-                timeout: 10000,
+                enableHighAccuracy: false, 
+                timeout: 5000,
                 maximumAge: 0
             };
+
             function success(pos) {
                 var crd = pos.coords;
-            
-                console.log('Your current position is:');
+
+                console.log('Your current position is: ');
                 console.log(`Latitude : ${crd.latitude}`);
                 console.log(`Longitude: ${crd.longitude}`);
 
                 localLocation = {
-                    latitude: crd.latitude,
-                    longitude: crd.longitude
-                
+                    lat: crd.latitude,
+                    lon: crd.longitude
                 };
-                console.log("localLocationInside Function" + localLocation);
+
+                console.log("localLocationObject check: " + localLocation);
             };
             
             function error(err) {
@@ -153,9 +158,6 @@ var marsPhoto = 0;
             }
             
             navigator.geolocation.getCurrentPosition(success, error, options);
-            
-            console.log("localLocationOutsideFunction" + localLocation);
-
         };
 
     //Write collected info to DOM
@@ -193,9 +195,12 @@ var marsPhoto = 0;
 
 //Initialize
 FXstart();
-FXweatherGeolocation ();
-FXdisplayLocalWeather();
-FXdisplayMarsWeather();
+FXweatherGeolocation();
+$("#launch").on("click", function() {
+    FXdisplayLocalWeather();
+});
+// FXdisplayLocalWeather();
+// FXdisplayMarsWeather();
 
 
 
