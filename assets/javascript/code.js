@@ -80,8 +80,8 @@ var marsPhoto = 0;
             marsWeather = response;
 
             // Testing responses
-            console.log("MAAS2 Temperature (C) check " + response.max_temp);
-            console.log("MAAS2 Atmo check " + response.atmo_opacity);
+            console.log("MAAS2 Temperature (C) check " + marsWeather.max_temp);
+            console.log("MAAS2 Atmo check " + marsWeather.atmo_opacity);
         });
     }
 
@@ -129,32 +129,32 @@ var marsPhoto = 0;
 
         //Geolocate user endpoint
         function FXweatherGeolocation (){
-                var options = {
-                    enableHighAccuracy: true,
-                    timeout: 5000,
-                    maximumAge: 0
+            var options = {
+                enableHighAccuracy: false, 
+                timeout: 5000,
+                maximumAge: 0
+            };
+
+            function success(pos) {
+                var crd = pos.coords;
+
+                console.log('Your current position is: ');
+                console.log(`Latitude : ${crd.latitude}`);
+                console.log(`Longitude: ${crd.longitude}`);
+
+                localLocation = {
+                    lat: crd.latitude,
+                    lon: crd.longitude
                 };
-                
-                function success(pos) {
-                    var crd = pos.coords;
-                
-                    console.log('Your current position is:');
-                    console.log(`Latitude : ${crd.latitude}`);
-                    console.log(`Longitude: ${crd.longitude}`);
-    
-                    localLocation = {
-                    latitude: crd.latitude,
-                    longitude: crd.longitude
-                };
-                ;
-                }
-                
-                function error(err) {
-                    console.warn(`ERROR(${err.code}): ${err.message}`);
-                }
-                
-                navigator.geolocation.getCurrentPosition(success, error, options);
-        
+
+                console.log("localLocationObject check: " + localLocation);
+            };
+            
+            function error(err) {
+                console.warn(`ERROR(${err.code}): ${err.message}`);
+            }
+            
+            navigator.geolocation.getCurrentPosition(success, error, options);
         };
 
     //Write collected info to DOM
