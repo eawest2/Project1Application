@@ -13,7 +13,27 @@ var marsPhoto = 0;
 
 //AJAX call functions
 
-    //Geolocation ** STRETCH GOAL**
+    // // Geolocation call function
+    // function FXweatherGeolocation () {
+    //     // The URL to query the ip-API
+    //     var queryURL = "http://ip-api.com/json";
+
+    //     // AJAX call to ip-API
+    //     $.ajax({
+    //         url: queryURL,
+    //         method: "GET"
+    //     })
+    //     // Stores all of the retrieved data inside of an object called "response"
+    //     .then(function(response) {
+    //         console.log("queryURL check: " + queryURL);
+    //         console.log("result object check: " + response);
+    //         // Assigns response object to global variable     
+    //         localLocation = response;
+    //         console.log("localLocation: " + localLocation);
+    //         console.log("ip-api lat" + localLocation.lat);
+    //         console.log("ip-api lon" + localLocation.lon);
+    //     });
+    // }
 
     //Open Weather Call function
     function FXdisplayLocalWeather() {
