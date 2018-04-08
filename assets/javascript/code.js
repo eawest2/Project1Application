@@ -4,10 +4,12 @@ $( document ).ready(function() {
 
 //Primary Variable Storage
 
-var localLocation = 0;
+var localLon = 0;
+var localLat = 0;
 var marsWeather = 0;
 var localWeather = 0;
 var marsPhoto = 0;
+
 
 
 
@@ -17,14 +19,18 @@ var marsPhoto = 0;
 
     //Open Weather Call function
     function FXdisplayLocalWeather() {
+        console.log("inside displayLocalWeather: " + localLat);
         // This is our API key and variables for the queryURL
         var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
         // Captured from button click
-        var location = "city,country";
+        var lat = localLat;
+        var lon = localLon;
 
         // The URL to query the database
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-        "q=" + location + "&units=imperial&appid=" + APIKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat={" + lat + "}&lon={" + lon + "}&appid=" + APIKey;
+        
+        // "https://api.openweathermap.org/data/2.5/weather?" +
+        // "q=" + location + "&units=imperial&appid=" + APIKey;
 
         // Test cities urls
         // var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
@@ -56,6 +62,7 @@ var marsPhoto = 0;
 
     //Mars call function
     function FXdisplayMarsWeather() {
+        FXweatherGeolocation ();
         // The URL to query the MAAS2
         var queryURL = "https://api.maas2.jiinxt.com/latest"
 
@@ -99,6 +106,8 @@ var marsPhoto = 0;
         });
     }
 
+    FXdisplayMarsImage();
+
 
 //Function Declaration
 
@@ -121,6 +130,32 @@ var marsPhoto = 0;
 
         //Geolocate user endpoint
         function FXweatherGeolocation (){
+            var options = {
+                enableHighAccuracy: true, 
+                timeout: 10000,
+                maximumAge: 0
+            };
+            function success(pos) {
+                var crd = pos.coords;
+            
+                console.log('Your current position is:');
+                console.log(`Latitude : ${crd.latitude}`);
+                console.log(`Longitude: ${crd.longitude}`);
+
+                
+                localLatitude = crd.latitude;
+                localLongitude = crd.longitude;
+                
+                console.log("localLocationInside Function" + localLon);
+            };
+            
+            function error(err) {
+                console.warn(`ERROR(${err.code}): ${err.message}`);
+            }
+            
+            navigator.geolocation.getCurrentPosition(success, error, options);
+            
+            console.log("localLocationOutsideFunction" + localLat);
 
         };
 
@@ -158,9 +193,12 @@ var marsPhoto = 0;
 
 
 //Initialize
-
 FXstart();
+
+FXdisplayLocalWeather();
 FXdisplayMarsWeather();
+
+
 
 //howler player function//
 $(function(){
