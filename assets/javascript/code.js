@@ -25,11 +25,13 @@ $("#launch").on("click", function(){
                 </div>
             </div>
 
+
             <div class="col mars-weather-style" id="mars-weather">
+
                 <div class="card" style="width: 100%">
                     <div class="card-body">
                         <h5 class="card-title">Mars Weather</h5>
-                        <ul>
+                        <ul id="mars-weather">
                             <li>Wind Speed: 60</li>
                             <li>Temp: -100</li>
                             <li>Sunlight: None</li>
@@ -43,10 +45,7 @@ $("#launch").on("click", function(){
             <div class="card" style="width: 100%">
                 <div class="card-body">
                     <h5 class="card-title">Weather Comparison</h5>
-                    <ul class="text-left">
-                        <li>Tornado</li>
-                        <li>Antartica</li>
-                        <li>Black void</li>
+                    <ul class="text-left" id= "compare-weather">
                     </ul>
                 </div>
             </div>
@@ -178,6 +177,8 @@ $(".jumbotron").on("click", function(){
             console.log("OW object check: " + localWeather);
             console.log("OW Temperature (K) check: " + localWeather.main.temp)
             console.log("OW weather description check: " + localWeather.weather[0].description)
+
+            
         });
     } 
 
@@ -201,6 +202,9 @@ $(".jumbotron").on("click", function(){
             // Testing responses
             console.log("MAAS2 Temperature (C) check " + marsWeather.max_temp);
             console.log("MAAS2 Atmo check " + marsWeather.atmo_opacity);
+
+
+            FXdelta();
 
         });
     }
@@ -270,6 +274,8 @@ $(".jumbotron").on("click", function(){
                 };
 
                 console.log("localLocationObject check: " + localLocation);
+
+                
             };
             
             function error(err) {
@@ -277,6 +283,7 @@ $(".jumbotron").on("click", function(){
             }
             
             navigator.geolocation.getCurrentPosition(success, error, options);
+            
         };
 
     //Write collected info to DOM
@@ -292,6 +299,7 @@ $(".jumbotron").on("click", function(){
         $(".marsTemp").text("Temperature (C) " + response.max_temp);
         
         $(".marsWeather").text(response.atmo_opacity);
+
         //write mars photo
 
     };
@@ -299,13 +307,59 @@ $(".jumbotron").on("click", function(){
     //Compute delta
     function FXdelta () {
         //compute deltaTemp
-        var deltaTemp = (localWeather.main.temp - 273.15) - ((marsWeather.min_temp + marsWeather.max_temp)/2);
-        console.log(deltaTemp);
+        console.log(localWeather.main.temp - 273.15);
+        console.log (marsWeather.max_temp);
+        console.log (marsWeather.min_temp);
+
+        var deltaTemp = Math.floor((localWeather.main.temp - 273.15) - ((marsWeather.min_temp + marsWeather.max_temp)/2));
+        
 
         //compute deltaWeather
 
+        var marsAtmo = marsWeather.atmo_opacity
+        var localAtmo = localWeather.weather[0].main
+
+        console.log(localAtmo);
+        console.log(marsAtmo);
+
+        if (localAtmo == "Clouds" && marsAtmo == "Cloudy" ) {
+        $("#compare-weather").append("<ul> There's cloud cover on mars today, just like home. However I bet your clouds aren't made of iron filings moving at 60 miles an hour. </ul>");
+        }
+        else if (localAtmo == "Clouds" && marsAtmo == "Sunny" ) {
+        $("#compare-weather").append("<ul>It's Sunny on mars today, unlike home. However, its probably still darker on Mars despite the clouds, since the sun is an extra 50,000,000 miles away </ul>");
+        }
+        else if (localAtmo == "Clear") {
+        $("#compare-weather").append("<ul>Clear Skies at home is a happy reminder of how we have a glorious atmosphere that we can breathe. Unlike on Mars, which has only 60% as much atmosphere in general, and the majority of it is Carbon Dioxide.</ul>");
+        }
+        else if (localAtmo == "Rain") {
+        $("#compare-weather").append("<ul>Rain may make you think that the weather must be better anywhere else. Not on Mars, where it never rains, and all the water is frozen into ice crystals.</ul>");
+        }
+        else if (localAtmo == "Snow") {
+        $("#compare-weather").append("<ul>Snow can be cold and upsetting, but ultimately it repleneshes the ground water. Meanwhile, on Mars, the only snow is frozen Carbon Dioxide crystals at the poles and thus a minimum of -78.5 degrees celcius.</ul>");
+        }
+        else if (localAtmo == "Extreme") {
+        $("#compare-weather").append("<ul>The weather is pretty garbage right now at home, no lie. But remember that no matter how bad it is, at least you're not dying of radiation poisoning like you would be on Mars since they have no Van Allen belts to protect you from radiation.</ul>");
+        }
+        else if (localAtmo == "Mist") {
+        $("#compare-weather").append("<ul>A nice light mist in the air is always a welcome reminder of how you have water vapor to breathe in to help you stay hydrated. Unlike Mars, where all the water is frozen in tiny crystals in the dirt.</ul>");
+        }
+        else if (localAtmo == "Extreme") {
+        $("#compare-weather").append("<ul>The weather is pretty garbage right now at home, no lie. But remember that no matter how bad it is, at least you're not dying of radiation poisoning like you would be on Mars since they have no Van Allen belts to protect you from radiation.</ul>");
+        }
+        else if (localAtmo == "Fog") {
+        $("#compare-weather").append("<ul>Fog may make visibility a pain, but remember that no matter how bad it is, the visibility is better than during a Martian dust storm, and the fog isn't made of razor sharp iron particles either.</ul>");
+        }
+        else {
+        $("#compare-weather").append("<ul>Earth weather can be wild and varried, but at least your blood isn't likely to freeze in 30 seconds if you walk outside.</ul>");
+        };
+
+
+        ;
+
 
         //compute deltaSeason
+
+        //initialize FXdeltaWrite
     };
 
     //Write delta content to DOM
@@ -385,6 +439,8 @@ $("#launch").on("click", function() {
     FXdisplayLocalWeather();
     FXdisplayMarsWeather();
 });
+
+
 
 
 });
