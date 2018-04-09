@@ -51,7 +51,7 @@ a:hover{
   margin-bottom: 20px;
 }
 
-#local-weather,#mars-weather{
+.local-weather-style,.mars-weather-style{
   background-color: black;
   margin: 20px;
 }

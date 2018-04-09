@@ -12,7 +12,7 @@ var marsPhoto = 0;
 $("#launch").on("click", function(){
     $("#main-content").html(
         `<div class="row">
-            <div class="col" id="local-weather">
+            <div class="col local-weather-style" id="local-weather">
                 <div class="card" style="width: 100%">
                     <div class="card-body">
                         <h5 class="card-title">Local Weather</h5>
@@ -25,7 +25,7 @@ $("#launch").on("click", function(){
                 </div>
             </div>
 
-            <div class="col" id="mars-weather">
+            <div class="col mars-weather-style" id="mars-weather">
                 <div class="card" style="width: 100%">
                     <div class="card-body">
                         <h5 class="card-title">Mars Weather</h5>
@@ -109,7 +109,7 @@ $(".jumbotron").on("click", function(){
     };
 
     // ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg",]
-    var rand = Math.floor(Math.random()*10);
+    var rand = Math.floor(Math.random()*10)+1;
     var elementSelect = "image" + rand
     console.log(elementSelect);
     var imageSelect = images[elementSelect].address;
