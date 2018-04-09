@@ -215,7 +215,7 @@ $("#launch").on("click", function(){
 
         //write weather info
         $(".temp").text("Temperature (F) " + response.main.temp);
-  
+    
         $(".weather").text(response.weather.description);
 
 
@@ -230,7 +230,12 @@ $("#launch").on("click", function(){
     //Compute delta
     function FXdelta () {
         //compute deltaTemp
+        var deltaTemp = (localWeather.main.temp - 273.15) - ((marsWeather.min_temp + marsWeather.max_temp)/2);
+        console.log(deltaTemp);
+
         //compute deltaWeather
+
+
         //compute deltaSeason
     };
 
@@ -242,17 +247,7 @@ $("#launch").on("click", function(){
 
     };
 
-
-//Initialize
-
-FXstart();
-FXweatherGeolocation();
-$("#launch").on("click", function() {
-    FXdisplayLocalWeather();
-    FXdisplayMarsWeather();
-});
-
-//howler player functions//
+    //howler player functions//
     $(function(){
         var sound1=new Howl({
         src: ["assets/audio/RingTone01_Longer.mp3"],
@@ -311,4 +306,16 @@ $("#launch").on("click", function() {
             music.volume(vol);
 	});
 });
+
+
+//Initialize
+
+FXstart();
+FXweatherGeolocation();
+$("#launch").on("click", function() {
+    FXdisplayLocalWeather();
+    FXdisplayMarsWeather();
+});
+
+
 });
