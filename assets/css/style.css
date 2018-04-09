@@ -31,7 +31,7 @@ a:hover{
 }
 
 .jumbotron {
-  background-image:url("../images/planet.jpg");
+  background-image: url("../images/planet.jpg");
 }
 
 .card,.btn{
@@ -54,4 +54,8 @@ a:hover{
 #local-weather,#mars-weather{
   background-color: black;
   margin: 20px;
+}
+
+#curiosity{
+  margin-right: 10px;
 }

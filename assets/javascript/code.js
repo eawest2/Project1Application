@@ -55,6 +55,72 @@ $("#launch").on("click", function(){
     );
 });
 
+$(".jumbotron").on("click", function(){
+    var images = {
+        image1: {
+            address: "1.jpg",
+            color: "white",
+        },
+
+        image2: {
+            address: "2.jpg",
+            color: "white"
+        },
+
+        image3: {
+            address: "3.jpg",
+            color: "black"
+        },
+        
+        image4: {
+            address: "4.jpg",
+            color: "white"
+        },
+
+        image5: {
+            address: "5.jpg",
+            color: "white"
+        },
+
+        image6: {
+            address: "6.jpg",
+            color: "white"
+        },
+
+        image7: {
+            address: "7.jpg",
+            color: "white"
+        },
+
+        image8: {
+            address: "8.jpg",
+            color: "white"
+        }, 
+
+        image9: {
+            address: "9.jpg",
+            color: "white"
+        },
+                
+        image10: {
+            address: "10.jpg",
+            color: "white"
+        },
+    };
+
+    // ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg",]
+    var rand = Math.floor(Math.random()*10);
+    var elementSelect = "image" + rand
+    console.log(elementSelect);
+    var imageSelect = images[elementSelect].address;
+    var colorSelect = images[elementSelect].color;
+    // $(".jumbotron").css("background-image", "url('../images/" + imageSelect + ".jpg')");
+    $(".jumbotron").css("background-image", "url('assets/images/" + imageSelect +"')");
+    $(".display-4").css("color", colorSelect);
+    $("#colorChange").css("color", colorSelect);
+
+});
+
 // $("#relaunch").on("click", function(){
 //     console.log("hi");
 //     // $("#main-content").html(
@@ -135,6 +201,7 @@ $("#launch").on("click", function(){
             // Testing responses
             console.log("MAAS2 Temperature (C) check " + marsWeather.max_temp);
             console.log("MAAS2 Atmo check " + marsWeather.atmo_opacity);
+
         });
     }
 
@@ -159,6 +226,8 @@ $("#launch").on("click", function(){
             marsPhoto = response;
         });
     }
+
+
 
 
 //Function Declaration
