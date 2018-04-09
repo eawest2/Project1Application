@@ -199,43 +199,63 @@ $("#launch").on("click", function() {
     FXdisplayMarsWeather();
 });
 
-//howler player function//
-
-$(function(){
-
-	var howler_example = new Howl({
-		src: ["assets/audio/8BallAitken_CycloneCountry.mp3"],
-		volume: 0.5
-	});
-
-	$("#howler-play").on("click", function(){
-		howler_example.play();
-	});
-
-	$("#howler-pause").on("click", function(){
-		howler_example.pause();
-	});
-
-	$("#howler-stop").on("click", function(){
-		howler_example.stop();
-	});
-
-	$("#howler-volup").on("click", function(){
-		var vol = howler_example.volume();
-		vol += 0.1;
-		if (vol > 1) {
-			vol = 1;
-		}
-		howler_example.volume(vol);
-	});
-
-	$("#howler-voldown").on("click", function(){
-		var vol = howler_example.volume();
-		vol -= 0.1;
-		if (vol < 0) {
-			vol = 0;
-		}
-		howler_example.volume(vol);
+//howler player functions//
+    $(function(){
+        var sound1=new Howl({
+        src: ["assets/audio/RingTone01_Longer.mp3"],
+        volume: 0.8
+        });
+        $("#launch").on("click", function(){
+        sound1.play();
+        });  
+    });
+    $(function(){
+        var sound2=new Howl({
+        src: ["assets/audio/earth001.mp3"],
+        volume: 0.8
+        });
+        $("#somewhere1").on("click", function(){
+        sound2.play();
+        });  
+    });
+    $(function(){
+        var sound3=new Howl({
+        src: ["assets/audio/tim-kahn__mars.wav"],
+        volume: 0.8
+        });
+        $("#somewhere2").on("click", function(){
+        sound3.play();
+        });  
+    });            
+    $(function(){
+        var music=new Howl({
+            src: ["assets/audio/CycloneCountry.mp3"],
+            volume: 0.5
+        });
+        $("#howler-play").on("click", function(){
+            music.play();
+        });
+        $("#howler-pause").on("click", function(){
+            music.pause();
+        });
+        $("#howler-stop").on("click", function(){
+            music.stop();
+        });
+        $("#howler-volup").on("click", function(){
+            var vol = music.volume();
+            vol += 0.1;
+            if (vol>1) {
+                vol=1;
+            }
+            music.volume(vol);
+        });
+        $("#howler-voldown").on("click", function(){
+            var vol=music.volume();
+            vol -= 0.1;
+            if (vol<0) {
+                vol=0;
+            }
+            music.volume(vol);
 	});
 });
 });
