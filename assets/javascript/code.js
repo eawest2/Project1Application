@@ -13,25 +13,27 @@ var marsMonth = 0;
 $("#launch").on("click", function(){
     $("#main-content").html(
         `<div class="row">
-            <div class="col local-weather-style" id="local-weather">
+            <div class="col local-weather-style">
                 <div class="card" style="width: 100%">
                     <div class="card-body local-weather-style">
-                        <h5 class="card-title"> Local Weather </h5>
-                        <ul id = "local-weather">
+                        <h4 class="card-title"> Local Weather </h4>
+                        <hr>
+                        <div id="local-weather">
                             
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
 
-            <div class="col mars-weather-style" id="mars-weather">
+            <div class="col mars-weather-style">
 
                 <div class="card" style="width: 100%">
                     <div class="card-body mars-weather-style" >
-                        <h5 class="card-title"> Mars Weather </h5>
-                        <ul id= "mars-weather">
-                        </ul>
+                        <h4 class="card-title"> Mars Weather </h4>
+                        <hr>
+                        <div id= "mars-weather">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -299,7 +301,7 @@ $(".jumbotron").on("click", function(){
         FXcomputeMarsMonth();
 
         $("#mars-weather").html(
-            "<p> Martian Month: " + marsMonth + "</p>" +
+            "<p> Martian Month: " + marsMonth + " </p>" +
             "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "Celcius </p>" +
             "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
         );
