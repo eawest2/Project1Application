@@ -410,6 +410,12 @@ $(".jumbotron").on("click", function(){
         else if (deltaTemp > 45 && deltaTemp <= 65) {
             $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the difference between a frozen steak, and one cooked to well-done. </ul>");
         }
+        else if (deltaTemp > 65 && deltaTemp <= 85) {
+            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the differnce between a cup of hot coffee and a ice cube. </ul>");
+        }
+        else if (deltaTemp > 85) {
+            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the differnce between an ice cube and a pot of boiling water. </ul>");
+        }
 
         //compute deltaWeather
 
