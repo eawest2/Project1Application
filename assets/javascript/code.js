@@ -8,18 +8,17 @@ var localLocation = {};
 var marsWeather = 0;
 var localWeather = 0;
 var marsPhoto = 0;
+var marsMonth = 0;
 
 $("#launch").on("click", function(){
     $("#main-content").html(
         `<div class="row">
-            <div class="col" id="local-weather">
+            <div class="col" >
                 <div class="card" style="width: 100%">
-                    <div class="card-body">
+                    <div class="card-body local-weather-style">
                         <h5 class="card-title">Local Weather</h5>
-                        <ul>
-                            <li>Wind Speed: 10</li>
-                            <li>Temp: 70</li>
-                            <li>Sunlight: All</li>
+                        <ul id = "local-weather">
+                            
                         </ul>
                     </div>
                 </div>
@@ -27,12 +26,9 @@ $("#launch").on("click", function(){
 
             <div class="col" >
                 <div class="card" style="width: 100%">
-                    <div class="card-body">
+                    <div class="card-body mars-weather-style" >
                         <h5 class="card-title">Mars Weather</h5>
-                        <ul id="mars-weather">
-                            <li>Wind Speed: 60</li>
-                            <li>Temp: -100</li>
-                            <li>Sunlight: None</li>
+                        <ul id= "mars-weather">
                         </ul>
                     </div>
                 </div>
@@ -218,17 +214,106 @@ $("#launch").on("click", function(){
     function FXwriteFacts (){
 
         //write weather info
-        $(".temp").text("Temperature (F) " + response.main.temp);
-    
-        $(".weather").text(response.weather.description);
 
+
+        $("#local-weather").text(
+        "<li>Wind Speed: " + 10 + "</li>" +
+        "<li>Temp: " + localWeather.main.temp + "</li>" +
+        "<li>Conditions: " + localWeather.weather[0].main + "</li>"
+        );
 
         //write mars info
-        $(".marsTemp").text("Temperature (C) " + response.max_temp);
-        
-        $(".marsWeather").text(response.atmo_opacity);
+
+        FXcomputeMarsMonth();
+
+        $("#mars-weather").text(
+            "<li>Martian Month: " +  + "</li>" +
+            "<li>Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "</li>" +
+            "<li>Conditions: " + marsWeather.atmo_opacity + "</li>"
+        );
 
         //write mars photo
+
+    };
+
+    function FXcomputeMarsMonth(){
+
+        var marsCalendar = ["Sagittarius","Dhanus","Capricornus", "Makara", "Aquarius","Kumbha", ]
+
+        if (marsWeather.season == "Month 1"){
+            marsMonth = marsCalendar[0];
+        }
+        else if (marsWeather.season == "Month 2"){
+            marsMonth = marsCalendar[1];
+        }
+        else if (marsWeather.season == "Month 3"){
+            marsMonth = marsCalendar[2];
+        }
+        else if (marsWeather.season == "Month 4"){
+            marsMonth = marsCalendar[3];
+        }
+        else if (marsWeather.season == "Month 5"){
+            marsMonth = marsCalendar[4];
+        }
+        else if (marsWeather.season == "Month 6"){
+            marsMonth = marsCalendar[5];
+        }
+        else if (marsWeather.season == "Month 7"){
+            marsMonth = marsCalendar[6];
+        }
+        else if (marsWeather.season == "Month 8"){
+            marsMonth = marsCalendar[7];
+        }
+        else if (marsWeather.season == "Month 9"){
+            marsMonth = marsCalendar[8];
+        }
+        else if (marsWeather.season == "Month 10"){
+            marsMonth = marsCalendar[9];
+        }
+        else if (marsWeather.season == "Month 11"){
+            marsMonth = marsCalendar[10];
+        }
+        else if (marsWeather.season == "Month 12"){
+            marsMonth = marsCalendar[11];
+        }
+        else if (marsWeather.season == "Month 13"){
+            marsMonth = marsCalendar[12];
+        }
+        else if (marsWeather.season == "Month 14"){
+            marsMonth = marsCalendar[13];
+        }
+        else if (marsWeather.season == "Month 15"){
+            marsMonth = marsCalendar[14];
+        }
+        else if (marsWeather.season == "Month 16"){
+            marsMonth = marsCalendar[15];
+        }
+        else if (marsWeather.season == "Month 17"){
+            marsMonth = marsCalendar[16];
+        }
+        else if (marsWeather.season == "Month 18"){
+            marsMonth = marsCalendar[17];
+        }
+        else if (marsWeather.season == "Month 19"){
+            marsMonth = marsCalendar[18];
+        }
+        else if (marsWeather.season == "Month 20"){
+            marsMonth = marsCalendar[19];
+        }
+        else if (marsWeather.season == "Month 21"){
+            marsMonth = marsCalendar[20];
+        }
+        else if (marsWeather.season == "Month 22"){
+            marsMonth = marsCalendar[21];
+        }
+        else if (marsWeather.season == "Month 23"){
+            marsMonth = marsCalendar[22];
+        }
+        else if (marsWeather.season == "Month 24"){
+            marsMonth = marsCalendar[23];
+        }
+
+
 
     };
 
@@ -241,15 +326,13 @@ $("#launch").on("click", function(){
 
         var deltaTemp = Math.floor((localWeather.main.temp - 273.15) - ((marsWeather.min_temp + marsWeather.max_temp)/2));
         
+        console.log(deltaTemp);
 
         //compute deltaWeather
 
         var marsAtmo = marsWeather.atmo_opacity
         var localAtmo = localWeather.weather[0].main
-
-        console.log(localAtmo);
-        console.log(marsAtmo);
-
+        
         if (localAtmo == "Clouds" && marsAtmo == "Cloudy" ) {
         $("#compare-weather").append("<ul> There's cloud cover on mars today, just like home. However I bet your clouds aren't made of iron filings moving at 60 miles an hour. </ul>");
         }
@@ -281,19 +364,18 @@ $("#launch").on("click", function(){
         $("#compare-weather").append("<ul>Earth weather can be wild and varried, but at least your blood isn't likely to freeze in 30 seconds if you walk outside.</ul>");
         };
 
-
         ;
 
 
         //compute deltaSeason
 
         //initialize FXdeltaWrite
+
     };
 
     //Write delta content to DOM
     function FXdeltaWrite () {
         //write comparison 1
-        //write comparison 2
         //write comparison 3
 
     };
