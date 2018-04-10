@@ -303,9 +303,9 @@ $(".jumbotron").on("click", function(){
         FXcomputeMarsMonth();
 
         $("#mars-weather").html(
-            "<p> Martian Month: " + marsMonth + " </p>" +
-            "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "Celcius </p>" +
-            "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
+        "<p> Martian Month: " + marsMonth + " </p>" +
+        "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "Celcius </p>" +
+        "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
         );
 
         //write mars photo
@@ -436,9 +436,6 @@ $(".jumbotron").on("click", function(){
         }
         else if (localAtmo == "Mist") {
         $("#compare-weather").append("<ul>A nice light mist in the air is always a welcome reminder of how you have water vapor to breathe in to help you stay hydrated. Unlike Mars, where all the water is frozen in tiny crystals in the dirt.</ul>");
-        }
-        else if (localAtmo == "Extreme") {
-        $("#compare-weather").append("<ul>The weather is pretty garbage right now at home, no lie. But remember that no matter how bad it is, at least you're not dying of radiation poisoning like you would be on Mars since they have no Van Allen belts to protect you from radiation.</ul>");
         }
         else if (localAtmo == "Fog") {
         $("#compare-weather").append("<ul>Fog may make visibility a pain, but remember that no matter how bad it is, the visibility is better than during a Martian dust storm, and the fog isn't made of razor sharp iron particles either.</ul>");
