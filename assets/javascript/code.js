@@ -310,7 +310,7 @@ $(".jumbotron").on("click", function(){
 
     function FXcomputeMarsMonth(){
 
-        var marsCalendar = ["Sagittarius","Dhanus","Capricornus", "Makara", "Aquarius","Kumbha", ]
+        var marsCalendar = ["Sagittarius","Dhanus","Capricornus", "Makara", "Aquarius","Kumbha", "Pisces", "Mina", "Aries", "Mesha", "Taurus", "Rishabha", "Gemini", "Mithuna", "Cancer", "Karka", "Leo", "Simha", "Virgo", "Kanya", "Libra", "Tula", "Scorpius", "Vrishika"]
 
         if (marsWeather.season == "Month 1"){
             marsMonth = marsCalendar[0];
