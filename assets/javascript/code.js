@@ -399,16 +399,16 @@ $(".jumbotron").on("click", function(){
         var deltaTemp = Math.floor((localWeather.main.temp - 273.15) - ((marsWeather.min_temp + marsWeather.max_temp)/2));
 
         if (deltaTemp <= 15) {
-            $("#compare-temp").append("<ul> Wow, it's really cold out where you're at, Antarctic winter cold. Even so, it's still colder on Mars, by the same degree of warmth as a warm spring day. </ul>");
+            $("#compare-temp").append("<p> Wow, it's really cold out where you're at, Antarctic winter cold. Even so, it's still colder on Mars, by the same degree of warmth as a warm spring day. </p>");
         }
         else if (deltaTemp > 15 && deltaTemp <= 25) {
-            $("#compare-temp").append("<ul> It's pretty cold out today. The difference between your temperature and martian temperature however is the difference in average temperature in New York City, and McMurdo Sound in Antacrtica. </ul>");
+            $("#compare-temp").append("<p> It's pretty cold out today. The difference between your temperature and martian temperature however is the difference in average temperature in New York City, and McMurdo Sound in Antacrtica. </p>");
         }
         else if (deltaTemp > 25 && deltaTemp <= 45) {
-            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the difference in temperature between the Saharah desert in summer, and the Antarctic winter. </ul>");
+            $("#compare-temp").append("<p> The difference in temperature between you and Mars is the same as the difference in temperature between the Saharah desert in summer, and the Antarctic winter. </p>");
         }
         else if (deltaTemp > 45 && deltaTemp <= 65) {
-            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the difference between a frozen steak, and one cooked to well-done. </ul>");
+            $("#compare-temp").append("<p> The difference in temperature between you and Mars is the same as the difference between a frozen steak, and one cooked to well-done. </p>");
         }
 
         //compute deltaWeather
