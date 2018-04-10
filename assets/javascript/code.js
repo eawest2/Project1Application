@@ -44,10 +44,9 @@ $("#launch").on("click", function(){
             <div class="card" style="width: 100%">
                 <div class="card-body">
                     <h5 class="card-title">Weather Comparison</h5>
-
-                    <ul class="text-left" id= "compare-temp">
-                    <ul class="text-left" id= "compare-weather">
-                    </ul>
+                    <div class="weather-image"><div>
+                    <p class="text-left" id="compare-temp"></p>
+                    <p class="text-left" id="compare-weather"></p>
                 </div>
             </div>
         </div>`
@@ -418,39 +417,39 @@ $(".jumbotron").on("click", function(){
         var localAtmo = localWeather.weather[0].main
         
         if (localAtmo == "Clouds" && marsAtmo == "Cloudy" ) {
-        $("#compare-weather").append("<ul> There's cloud cover on mars today, just like home. However I bet your clouds aren't made of iron filings moving at 60 miles an hour. </ul>");
+        $("#compare-weather").append("<p> There's cloud cover on mars today, just like home. However I bet your clouds aren't made of iron filings moving at 60 miles an hour. </p>");
         $(".weather-image").append("<img src='assets/images/mars-cloud.jpg' width=300px>");
         }
         else if (localAtmo == "Clouds" && marsAtmo == "Sunny" ) {
-        $("#compare-weather").append("<ul>It's Sunny on mars today, unlike home. However, its probably still darker on Mars despite the clouds, since the sun is an extra 50,000,000 miles away </ul>");
+        $("#compare-weather").append("<p>It's Sunny on mars today, unlike home. However, its probably still darker on Mars despite the clouds, since the sun is an extra 50,000,000 miles away </p>");
         $(".weather-image").append("<img src='assets/images/mars-night.jpg' width=300px>");
         }
         else if (localAtmo == "Clear") {
-        $("#compare-weather").append("<ul>Clear Skies at home is a happy reminder of how we have a glorious atmosphere that we can breathe. Unlike on Mars, which has only 60% as much atmosphere in general, and the majority of it is Carbon Dioxide.</ul>");
+        $("#compare-weather").append("<p>Clear Skies at home is a happy reminder of how we have a glorious atmosphere that we can breathe. Unlike on Mars, which has only 60% as much atmosphere in general, and the majority of it is Carbon Dioxide.</p>");
         $(".weather-image").append("<img src='assets/images/dead-martian.jpg' width=300px>");
         }
         else if (localAtmo == "Rain") {
-        $("#compare-weather").append("<ul>Rain may make you think that the weather must be better anywhere else. Not on Mars, where it never rains, and all the water is frozen into ice crystals.</ul>");
+        $("#compare-weather").append("<p>Rain may make you think that the weather must be better anywhere else. Not on Mars, where it never rains, and all the water is frozen into ice crystals.</p>");
         $(".weather-image").append("<img src='assets/images/dry-mars.jpg' width=300px>");
         }
         else if (localAtmo == "Snow") {
-        $("#compare-weather").append("<ul>Snow can be cold and upsetting, but ultimately it repleneshes the ground water. Meanwhile, on Mars, the only snow is frozen Carbon Dioxide crystals at the poles and thus a minimum of -78.5 degrees celcius.</ul>");
+        $("#compare-weather").append("<p>Snow can be cold and upsetting, but ultimately it repleneshes the ground water. Meanwhile, on Mars, the only snow is frozen Carbon Dioxide crystals at the poles and thus a minimum of -78.5 degrees celcius.</p>");
         $(".weather-image").append("<img src='assets/images/antartica.jpg' width=300px>");
         }
         else if (localAtmo == "Extreme") {
-        $("#compare-weather").append("<ul>The weather is pretty garbage right now at home, no lie. But remember that no matter how bad it is, at least you're not dying of radiation poisoning like you would be on Mars since they have no Van Allen belts to protect you from radiation.</ul>");
+        $("#compare-weather").append("<p>The weather is pretty garbage right now at home, no lie. But remember that no matter how bad it is, at least you're not dying of radiation poisoning like you would be on Mars since they have no Van Allen belts to protect you from radiation.</p>");
         $(".weather-image").append("<img src='assets/images/sharknado.jpg' width=300px>");
         }
         else if (localAtmo == "Mist") {
-        $("#compare-weather").append("<ul>A nice light mist in the air is always a welcome reminder of how you have water vapor to breathe in to help you stay hydrated. Unlike Mars, where all the water is frozen in tiny crystals in the dirt.</ul>");
+        $("#compare-weather").append("<p>A nice light mist in the air is always a welcome reminder of how you have water vapor to breathe in to help you stay hydrated. Unlike Mars, where all the water is frozen in tiny crystals in the dirt.</p>");
         $(".weather-image").append("<img src='assets/images/dry-mars.jpg' width=300px>");
         }
         else if (localAtmo == "Fog") {
-        $("#compare-weather").append("<ul>Fog may make visibility a pain, but remember that no matter how bad it is, the visibility is better than during a Martian dust storm, and the fog isn't made of razor sharp iron particles either.</ul>");
+        $("#compare-weather").append("<p>Fog may make visibility a pain, but remember that no matter how bad it is, the visibility is better than during a Martian dust storm, and the fog isn't made of razor sharp iron particles either.</p>");
         $(".weather-image").append("<img src='assets/images/mars-cloud.jpg' width=300px>");
         }
         else {
-        $("#compare-weather").append("<ul>Earth weather can be wild and varried, but at least your blood isn't likely to freeze in 30 seconds if you walk outside.</ul>");
+        $("#compare-weather").append("<p>Earth weather can be wild and varried, but at least your blood isn't likely to freeze in 30 seconds if you walk outside.</p>");
         $(".weather-image").append("<img src='assets/images/mars-ice.jpg' width=300px>");
         };
 
