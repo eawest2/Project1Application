@@ -8,34 +8,33 @@ var localLocation = {};
 var marsWeather = 0;
 var localWeather = 0;
 var marsPhoto = 0;
+var marsMonth = 0;
 
 $("#launch").on("click", function(){
     $("#main-content").html(
         `<div class="row">
-            <div class="col local-weather-style" id="local-weather">
+            <div class="col local-weather-style">
                 <div class="card" style="width: 100%">
-                    <div class="card-body">
-                        <h5 class="card-title">Local Weather</h5>
-                        <ul>
-                            <li>Wind Speed: 10</li>
-                            <li>Temp: 70</li>
-                            <li>Sunlight: All</li>
-                        </ul>
+                    <div class="card-body local-weather-style">
+                        <h4 class="card-title"> Local Weather </h4>
+                        <hr>
+                        <div id="local-weather">
+                            
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <br>
 
-            <div class="col mars-weather-style" id="mars-weather">
+            <div class="col mars-weather-style">
 
                 <div class="card" style="width: 100%">
-                    <div class="card-body">
-                        <h5 class="card-title">Mars Weather</h5>
-                        <ul id="mars-weather">
-                            <li>Wind Speed: 60</li>
-                            <li>Temp: -100</li>
-                            <li>Sunlight: None</li>
-                        </ul>
+                    <div class="card-body mars-weather-style" >
+                        <h4 class="card-title"> Mars Weather </h4>
+                        <hr>
+                        <div id= "mars-weather">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -45,8 +44,9 @@ $("#launch").on("click", function(){
             <div class="card" style="width: 100%">
                 <div class="card-body">
                     <h5 class="card-title">Weather Comparison</h5>
-                    <div class="weather-image"></div>
-                    <ul class="text-left" id="compare-weather">
+
+                    <ul class="text-left" id= "compare-temp">
+                    <ul class="text-left" id= "compare-weather">
                     </ul>
                 </div>
             </div>
@@ -291,38 +291,132 @@ $(".jumbotron").on("click", function(){
     function FXwriteFacts (){
 
         //write weather info
-        $(".temp").text("Temperature (F) " + response.main.temp);
-    
-        $(".weather").text(response.weather.description);
 
+
+        $("#local-weather").html(
+        "<p> Wind Speed: " +localWeather.wind.speed + " Kilometers per hour</p>" +
+        "<p> Temp: " + Math.floor(localWeather.main.temp -273.15) + " Celcius </p>" +
+        "<p> Conditions: " + localWeather.weather[0].main + "</p>"
+        );
 
         //write mars info
-        $(".marsTemp").text("Temperature (C) " + response.max_temp);
-        
-        $(".marsWeather").text(response.atmo_opacity);
+
+        FXcomputeMarsMonth();
+
+        $("#mars-weather").html(
+            "<p> Martian Month: " + marsMonth + " </p>" +
+            "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "Celcius </p>" +
+            "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
+        );
 
         //write mars photo
+
+    };
+
+    function FXcomputeMarsMonth(){
+
+        var marsCalendar = ["Sagittarius","Dhanus","Capricornus", "Makara", "Aquarius","Kumbha", "Pisces", "Mina", "Aries", "Mesha", "Taurus", "Rishabha", "Gemini", "Mithuna", "Cancer", "Karka", "Leo", "Simha", "Virgo", "Kanya", "Libra", "Tula", "Scorpius", "Vrishika"]
+
+        if (marsWeather.season == "Month 1"){
+            marsMonth = marsCalendar[0];
+        }
+        else if (marsWeather.season == "Month 2"){
+            marsMonth = marsCalendar[1];
+        }
+        else if (marsWeather.season == "Month 3"){
+            marsMonth = marsCalendar[2];
+        }
+        else if (marsWeather.season == "Month 4"){
+            marsMonth = marsCalendar[3];
+        }
+        else if (marsWeather.season == "Month 5"){
+            marsMonth = marsCalendar[4];
+        }
+        else if (marsWeather.season == "Month 6"){
+            marsMonth = marsCalendar[5];
+        }
+        else if (marsWeather.season == "Month 7"){
+            marsMonth = marsCalendar[6];
+        }
+        else if (marsWeather.season == "Month 8"){
+            marsMonth = marsCalendar[7];
+        }
+        else if (marsWeather.season == "Month 9"){
+            marsMonth = marsCalendar[8];
+        }
+        else if (marsWeather.season == "Month 10"){
+            marsMonth = marsCalendar[9];
+        }
+        else if (marsWeather.season == "Month 11"){
+            marsMonth = marsCalendar[10];
+        }
+        else if (marsWeather.season == "Month 12"){
+            marsMonth = marsCalendar[11];
+        }
+        else if (marsWeather.season == "Month 13"){
+            marsMonth = marsCalendar[12];
+        }
+        else if (marsWeather.season == "Month 14"){
+            marsMonth = marsCalendar[13];
+        }
+        else if (marsWeather.season == "Month 15"){
+            marsMonth = marsCalendar[14];
+        }
+        else if (marsWeather.season == "Month 16"){
+            marsMonth = marsCalendar[15];
+        }
+        else if (marsWeather.season == "Month 17"){
+            marsMonth = marsCalendar[16];
+        }
+        else if (marsWeather.season == "Month 18"){
+            marsMonth = marsCalendar[17];
+        }
+        else if (marsWeather.season == "Month 19"){
+            marsMonth = marsCalendar[18];
+        }
+        else if (marsWeather.season == "Month 20"){
+            marsMonth = marsCalendar[19];
+        }
+        else if (marsWeather.season == "Month 21"){
+            marsMonth = marsCalendar[20];
+        }
+        else if (marsWeather.season == "Month 22"){
+            marsMonth = marsCalendar[21];
+        }
+        else if (marsWeather.season == "Month 23"){
+            marsMonth = marsCalendar[22];
+        }
+        else if (marsWeather.season == "Month 24"){
+            marsMonth = marsCalendar[23];
+        }
+
+
 
     };
 
     //Compute delta
     function FXdelta () {
         //compute deltaTemp
-        console.log(localWeather.main.temp - 273.15);
-        console.log (marsWeather.max_temp);
-        console.log (marsWeather.min_temp);
-
         var deltaTemp = Math.floor((localWeather.main.temp - 273.15) - ((marsWeather.min_temp + marsWeather.max_temp)/2));
-        
+
+        if (deltaTemp <= 15) {
+            $("#compare-temp").append("<ul> Wow, it's really cold out where you're at, Antarctic winter cold. Even so, it's still colder on Mars, by the same degree of warmth as a warm spring day. </ul>");
+        }
+        else if (deltaTemp > 15 && deltaTemp <= 25) {
+            $("#compare-temp").append("<ul> It's pretty cold out today. The difference between your temperature and martian temperature however is the difference in average temperature in New York City, and McMurdo Sound in Antacrtica. </ul>");
+        }
+        else if (deltaTemp > 25 && deltaTemp <= 45) {
+            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the difference in temperature between the Saharah desert in summer, and the Antarctic winter. </ul>");
+        }
+        else if (deltaTemp > 45 && deltaTemp <= 65) {
+            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the difference between a frozen steak, and one cooked to well-done. </ul>");
+        }
 
         //compute deltaWeather
 
         var marsAtmo = marsWeather.atmo_opacity
         var localAtmo = localWeather.weather[0].main
-
-        console.log(localAtmo);
-        console.log(marsAtmo);
-
+        
         if (localAtmo == "Clouds" && marsAtmo == "Cloudy" ) {
         $("#compare-weather").append("<ul> There's cloud cover on mars today, just like home. However I bet your clouds aren't made of iron filings moving at 60 miles an hour. </ul>");
         $(".weather-image").append("<img src='assets/images/mars-cloud.jpg' width=300px>");
@@ -360,21 +454,13 @@ $(".jumbotron").on("click", function(){
         $(".weather-image").append("<img src='assets/images/mars-ice.jpg' width=300px>");
         };
 
-
         ;
 
 
         //compute deltaSeason
 
         //initialize FXdeltaWrite
-    };
-
-    //Write delta content to DOM
-    function FXdeltaWrite () {
-        //write comparison 1
-        //write comparison 2
-        //write comparison 3
-
+        FXwriteFacts();
     };
 
     //howler player functions//
