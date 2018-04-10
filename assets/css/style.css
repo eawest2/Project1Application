@@ -60,7 +60,6 @@ a:hover{
 }
 
 .local-weather-style,.mars-weather-style{
-  background-color: black;
   margin: 20px;
 }
 
@@ -73,6 +72,7 @@ a:hover{
   margin-right: 20px;
 }
 
-#compare-weather{
+#compare-weather,#compare-temp{
   font-size: 20px;
+  margin-left: 30px;
 }
