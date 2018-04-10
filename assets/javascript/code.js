@@ -304,9 +304,9 @@ $(".jumbotron").on("click", function(){
         FXcomputeMarsMonth();
 
         $("#mars-weather").html(
-            "<p> Martian Month: " + marsMonth + " </p>" +
-            "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "Celcius </p>" +
-            "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
+        "<p> Martian Month: " + marsMonth + " </p>" +
+        "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "Celcius </p>" +
+        "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
         );
 
         //write mars photo
