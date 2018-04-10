@@ -13,14 +13,10 @@ var marsMonth = 0;
 $("#launch").on("click", function(){
     $("#main-content").html(
         `<div class="row">
-<<<<<<< HEAD
-            <div class="col" >
-=======
             <div class="col local-weather-style" id="local-weather">
->>>>>>> 0ae931409b21978e21ec9053fe920447be4d58f9
                 <div class="card" style="width: 100%">
                     <div class="card-body local-weather-style">
-                        <h5 class="card-title">Local Weather</h5>
+                        <h5 class="card-title"> Local Weather </h5>
                         <ul id = "local-weather">
                             
                         </ul>
@@ -33,7 +29,7 @@ $("#launch").on("click", function(){
 
                 <div class="card" style="width: 100%">
                     <div class="card-body mars-weather-style" >
-                        <h5 class="card-title">Mars Weather</h5>
+                        <h5 class="card-title"> Mars Weather </h5>
                         <ul id= "mars-weather">
                         </ul>
                     </div>
@@ -292,20 +288,20 @@ $(".jumbotron").on("click", function(){
         //write weather info
 
 
-        $("#local-weather").text(
-        "<li>Wind Speed: " + 10 + "</li>" +
-        "<li>Temp: " + localWeather.main.temp + "</li>" +
-        "<li>Conditions: " + localWeather.weather[0].main + "</li>"
+        $("#local-weather").html(
+        "<p> Wind Speed: " +localWeather.wind.speed + " Kilometers per hour</p>" +
+        "<p> Temp: " + Math.floor(localWeather.main.temp -273.15) + " Celcius </p>" +
+        "<p> Conditions: " + localWeather.weather[0].main + "</p>"
         );
 
         //write mars info
 
         FXcomputeMarsMonth();
 
-        $("#mars-weather").text(
-            "<li>Martian Month: " +  + "</li>" +
-            "<li>Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "</li>" +
-            "<li>Conditions: " + marsWeather.atmo_opacity + "</li>"
+        $("#mars-weather").html(
+            "<p> Martian Month: " + marsMonth + "</p>" +
+            "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "Celcius </p>" +
+            "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
         );
 
         //write mars photo
@@ -446,7 +442,7 @@ $(".jumbotron").on("click", function(){
         //compute deltaSeason
 
         //initialize FXdeltaWrite
-
+        FXwriteFacts();
     };
 
     //Write delta content to DOM
