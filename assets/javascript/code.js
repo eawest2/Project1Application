@@ -44,7 +44,7 @@ $("#launch").on("click", function(){
             <div class="card" style="width: 100%">
                 <div class="card-body">
                     <h5 class="card-title">Weather Comparison</h5>
-                    <div class="weather-image"><div>
+                    <div class="weather-image"></div>
                     <p class="text-left" id="compare-temp"></p>
                     <p class="text-left" id="compare-weather"></p>
                 </div>
