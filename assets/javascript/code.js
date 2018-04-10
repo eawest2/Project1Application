@@ -25,6 +25,7 @@ $("#launch").on("click", function(){
                 </div>
             </div>
 
+            <br>
 
             <div class="col mars-weather-style">
 
@@ -43,6 +44,7 @@ $("#launch").on("click", function(){
             <div class="card" style="width: 100%">
                 <div class="card-body">
                     <h5 class="card-title">Weather Comparison</h5>
+                    <ul class="text-left" id= "compare-temp">
                     <ul class="text-left" id= "compare-weather">
                     </ul>
                 </div>
@@ -394,13 +396,20 @@ $(".jumbotron").on("click", function(){
     //Compute delta
     function FXdelta () {
         //compute deltaTemp
-        console.log(localWeather.main.temp - 273.15);
-        console.log (marsWeather.max_temp);
-        console.log (marsWeather.min_temp);
-
         var deltaTemp = Math.floor((localWeather.main.temp - 273.15) - ((marsWeather.min_temp + marsWeather.max_temp)/2));
-        
-        console.log(deltaTemp);
+
+        if (deltaTemp <= 15) {
+            $("#compare-temp").append("<ul> Wow, it's really cold out where you're at, Antarctic winter cold. Even so, it's still colder on Mars, by the same degree of warmth as a warm spring day. </ul>");
+        }
+        else if (deltaTemp > 15 && deltaTemp <= 25) {
+            $("#compare-temp").append("<ul> It's pretty cold out today. The difference between your temperature and martian temperature however is the difference in average temperature in New York City, and McMurdo Sound in Antacrtica. </ul>");
+        }
+        else if (deltaTemp > 25 && deltaTemp <= 45) {
+            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the difference in temperature between the Saharah desert in summer, and the Antarctic winter. </ul>");
+        }
+        else if (deltaTemp > 45 && deltaTemp <= 65) {
+            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the difference between a frozen steak, and one cooked to well-done. </ul>");
+        }
 
         //compute deltaWeather
 
@@ -445,13 +454,6 @@ $(".jumbotron").on("click", function(){
 
         //initialize FXdeltaWrite
         FXwriteFacts();
-    };
-
-    //Write delta content to DOM
-    function FXdeltaWrite () {
-        //write comparison 1
-        //write comparison 3
-
     };
 
     //howler player functions//
