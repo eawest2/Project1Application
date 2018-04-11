@@ -52,6 +52,7 @@ $("#launch").on("click", function(){
         </div>`
         // <button class="btn btn-default" id="relaunch">Re-Launch</button>
     );
+    FXdelta();
 });
 
 $(".jumbotron").on("click", function(){
@@ -150,7 +151,9 @@ $(".jumbotron").on("click", function(){
             console.log("localLocation: " + localLocation);
             console.log("ip-api lat" + localLocation.lat);
             console.log("ip-api lon" + localLocation.lon);
+            FXdisplayLocalWeather();
         });
+        
     }
 
     //Open Weather Call function
@@ -202,10 +205,6 @@ $(".jumbotron").on("click", function(){
             // Testing responses
             console.log("MAAS2 Temperature (C) check " + marsWeather.max_temp);
             console.log("MAAS2 Atmo check " + marsWeather.atmo_opacity);
-
-
-            FXdelta();
-
         });
     }
 
@@ -238,7 +237,10 @@ $(".jumbotron").on("click", function(){
 
     //Function to initialize all page content
     function FXstart (){
-
+        setTimeout(FXdisplayLaunch, 1500);
+        FXweatherGeolocation();
+        FXdisplayMarsWeather();
+        
     };
 
     //Function to reset page back to location selection
@@ -246,6 +248,11 @@ $(".jumbotron").on("click", function(){
 
 
     };
+
+    // Writes launch button to page after 1 second
+    function FXdisplayLaunch () {
+        document.getElementById("launch").style.visibility = "visible";
+    }
 
     //Determine weather location
         //Write weather options to DOM
@@ -304,7 +311,7 @@ $(".jumbotron").on("click", function(){
 
         $("#mars-weather").html(
         "<p> Martian Month: " + marsMonth + " </p>" +
-        "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "Celcius </p>" +
+        "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + " Celcius </p>" +
         "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
         );
 
@@ -526,11 +533,9 @@ $(".jumbotron").on("click", function(){
 //Initialize
 
 FXstart();
-FXweatherGeolocation();
-$("#launch").on("click", function() {
-    FXdisplayLocalWeather();
-    FXdisplayMarsWeather();
-});
+
+
+
 
 
 
