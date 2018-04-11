@@ -52,6 +52,7 @@ $("#launch").on("click", function(){
         </div>`
         // <button class="btn btn-default" id="relaunch">Re-Launch</button>
     );
+    FXdelta();
 });
 
 $(".jumbotron").on("click", function(){
@@ -131,27 +132,29 @@ $(".jumbotron").on("click", function(){
 
 //AJAX call functions
 
-    // // Geolocation call function
-    // function FXweatherGeolocation () {
-    //     // The URL to query the ip-API
-    //     var queryURL = "http://ip-api.com/json";
+    // Geolocation IP API call function
+    function FXweatherGeolocation () {
+        // The URL to query the ip-API
+        var queryURL = "http://ip-api.com/json";
 
-    //     // AJAX call to ip-API
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     })
-    //     // Stores all of the retrieved data inside of an object called "response"
-    //     .then(function(response) {
-    //         console.log("queryURL check: " + queryURL);
-    //         console.log("result object check: " + response);
-    //         // Assigns response object to global variable     
-    //         localLocation = response;
-    //         console.log("localLocation: " + localLocation);
-    //         console.log("ip-api lat" + localLocation.lat);
-    //         console.log("ip-api lon" + localLocation.lon);
-    //     });
-    // }
+        // AJAX call to ip-API
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        // Stores all of the retrieved data inside of an object called "response"
+        .then(function(response) {
+            console.log("queryURL check: " + queryURL);
+            console.log("result object check: " + response);
+            // Assigns response object to global variable     
+            localLocation = response;
+            console.log("localLocation: " + localLocation);
+            console.log("ip-api lat" + localLocation.lat);
+            console.log("ip-api lon" + localLocation.lon);
+            FXdisplayLocalWeather();
+        });
+        
+    }
 
     //Open Weather Call function
     function FXdisplayLocalWeather() {
@@ -202,10 +205,6 @@ $(".jumbotron").on("click", function(){
             // Testing responses
             console.log("MAAS2 Temperature (C) check " + marsWeather.max_temp);
             console.log("MAAS2 Atmo check " + marsWeather.atmo_opacity);
-
-
-            FXdelta();
-
         });
     }
 
@@ -238,7 +237,10 @@ $(".jumbotron").on("click", function(){
 
     //Function to initialize all page content
     function FXstart (){
-
+        setTimeout(FXdisplayLaunch, 1500);
+        FXweatherGeolocation();
+        FXdisplayMarsWeather();
+        
     };
 
     //Function to reset page back to location selection
@@ -247,6 +249,11 @@ $(".jumbotron").on("click", function(){
 
     };
 
+    // Writes launch button to page after 1 second
+    function FXdisplayLaunch () {
+        document.getElementById("launch").style.visibility = "visible";
+    }
+
     //Determine weather location
         //Write weather options to DOM
         function FXweatherPrint (){
@@ -254,37 +261,37 @@ $(".jumbotron").on("click", function(){
         };
 
         //Geolocate user endpoint
-        function FXweatherGeolocation (){
-            var options = {
-                enableHighAccuracy: false, 
-                timeout: 5000,
-                maximumAge: 0
-            };
+        // function FXweatherGeolocation (){
+        //     var options = {
+        //         enableHighAccuracy: false, 
+        //         timeout: 5000,
+        //         maximumAge: 0
+        //     };
 
-            function success(pos) {
-                var crd = pos.coords;
+        //     function success(pos) {
+        //         var crd = pos.coords;
 
-                console.log('Your current position is: ');
-                console.log(`Latitude : ${crd.latitude}`);
-                console.log(`Longitude: ${crd.longitude}`);
+        //         console.log('Your current position is: ');
+        //         console.log(`Latitude : ${crd.latitude}`);
+        //         console.log(`Longitude: ${crd.longitude}`);
 
-                localLocation = {
-                    lat: crd.latitude,
-                    lon: crd.longitude
-                };
+        //         localLocation = {
+        //             lat: crd.latitude,
+        //             lon: crd.longitude
+        //         };
 
-                console.log("localLocationObject check: " + localLocation);
+        //         console.log("localLocationObject check: " + localLocation);
 
                 
-            };
+        //     };
             
-            function error(err) {
-                console.warn(`ERROR(${err.code}): ${err.message}`);
-            }
+        //     function error(err) {
+        //         console.warn(`ERROR(${err.code}): ${err.message}`);
+        //     }
             
-            navigator.geolocation.getCurrentPosition(success, error, options);
+        //     navigator.geolocation.getCurrentPosition(success, error, options);
             
-        };
+        // };
 
     //Write collected info to DOM
     function FXwriteFacts (){
@@ -304,7 +311,7 @@ $(".jumbotron").on("click", function(){
 
         $("#mars-weather").html(
         "<p> Martian Month: " + marsMonth + " </p>" +
-        "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + "Celcius </p>" +
+        "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + " Celcius </p>" +
         "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
         );
 
@@ -532,11 +539,9 @@ $(".jumbotron").on("click", function(){
 //Initialize
 
 FXstart();
-FXweatherGeolocation();
-$("#launch").on("click", function() {
-    FXdisplayLocalWeather();
-    FXdisplayMarsWeather();
-});
+
+
+
 
 
 
