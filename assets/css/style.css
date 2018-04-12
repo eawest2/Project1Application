@@ -42,7 +42,7 @@ a:hover{
   background-image: url("../images/planet.jpg");
 }
 
-.card,.weather-image{
+.card,.weather-image,.jumbotron{
   border: 2px solid oldlace;
 }
 
