@@ -1,9 +1,7 @@
 //Red Rover Code Base
 $( document ).ready(function() {
 
-
 //Primary Variable Storage
-
 var localLocation = {};
 var marsWeather = 0;
 var localWeather = 0;
@@ -24,11 +22,8 @@ $("#launch").on("click", function(){
                     </div>
                 </div>
             </div>
-
             <br>
-
             <div class="col mars-weather-style">
-
                 <div class="card" style="width: 100%">
                     <div class="card-body mars-weather-style" >
                         <h4 class="card-title"> Mars Weather </h4>
@@ -39,7 +34,6 @@ $("#launch").on("click", function(){
                 </div>
             </div>
         </div>
-
         <div id="weather-comparison">
             <div class="card" style="width: 100%">
                 <div class="card-body">
@@ -60,12 +54,10 @@ $(".jumbotron").on("click", function(){
             address: "1.jpg",
             color: "white",
         },
-
         image2: {
             address: "2.jpg",
             color: "white"
         },
-
         image3: {
             address: "3.jpg",
             color: "black"
@@ -75,17 +67,14 @@ $(".jumbotron").on("click", function(){
             address: "4.jpg",
             color: "white"
         },
-
         image5: {
             address: "5.jpg",
             color: "white"
         },
-
         image6: {
             address: "6.jpg",
             color: "white"
         },
-
         image7: {
             address: "7.jpg",
             color: "white"
@@ -109,7 +98,6 @@ $(".jumbotron").on("click", function(){
 	
     var rand = Math.floor(Math.random()*10)+1;
     var elementSelect = "image" + rand
-    console.log(elementSelect);
     var imageSelect = images[elementSelect].address;
     var colorSelect = images[elementSelect].color;
     $(".jumbotron").css("background-image", "url('assets/images/" + imageSelect +"')");
@@ -119,12 +107,10 @@ $(".jumbotron").on("click", function(){
 });
 
 //AJAX call functions
-
     // Geolocation IP API call function
     function FXweatherGeolocation () {
         // The URL to query the ip-API
         var queryURL = "http://ip-api.com/json";
-
         // AJAX call to ip-API
         $.ajax({
             url: queryURL,
@@ -132,11 +118,8 @@ $(".jumbotron").on("click", function(){
         })
         // Stores all of the retrieved data inside of an object called "response"
         .then(function(response) {
-            console.log("queryURL check: " + queryURL);
-            console.log("result object check: " + response);
             // Assigns response object to global variable     
             localLocation = response;
-            console.log("localLocation: " + localLocation);
             console.log("ip-api lat" + localLocation.lat);
             console.log("ip-api lon" + localLocation.lon);
             FXdisplayLocalWeather();
@@ -148,10 +131,8 @@ $(".jumbotron").on("click", function(){
     function FXdisplayLocalWeather() {
         // This is our API key and variables for the queryURL
         var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
-
         // The URL to query the database
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + localLocation.lat + "&lon=" + localLocation.lon + "&appid=" + APIKey;
-        
         // AJAX call to the OpenWeatherMap API
         $.ajax({
             url: queryURL,
@@ -159,17 +140,9 @@ $(".jumbotron").on("click", function(){
         })
         // Stores all of the retrieved data inside of an object called "response"
         .then(function(response) {
-            console.log("queryURL check" + queryURL);
-            console.log("result object check" + response);
             // Assigns response object to global variable
             localWeather = response;
-
             // Testing responses
-            console.log("OW object check: " + localWeather);
-            console.log("OW Temperature (K) check: " + localWeather.main.temp)
-            console.log("OW weather description check: " + localWeather.weather[0].description)
-
-            
         });
     } 
 
@@ -177,7 +150,6 @@ $(".jumbotron").on("click", function(){
     function FXdisplayMarsWeather() {
         // The URL to query the MAAS2
         var queryURL = "https://api.maas2.jiinxt.com/latest"
-
         // AJAX call to MAAS2 API
         $.ajax({
             url: queryURL,
@@ -185,17 +157,11 @@ $(".jumbotron").on("click", function(){
         })
         // Stores all of the retrieved data inside of an object called "response"
         .then(function(response) {
-            console.log("queryURL check" + queryURL);
-            console.log("result object check" + response);
             // Assigns response object to global variable
             marsWeather = response;
-
             // Testing responses
-            console.log("MAAS2 Temperature (C) check " + marsWeather.max_temp);
-            console.log("MAAS2 Atmo check " + marsWeather.atmo_opacity);
         });
     }
-
     //Mars photo call function
     function FXdisplayMarsImage() {
         // This is our API key and variables for the Mars Photos queryURL
@@ -203,7 +169,6 @@ $(".jumbotron").on("click", function(){
         var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
         var queryURL = 
         "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=" + currentSOL + "&api_key=" + APIKey;
-
         // AJAX call to Mars Photos API
         $.ajax({
             url: queryURL,
@@ -211,18 +176,12 @@ $(".jumbotron").on("click", function(){
         })
         // Stores all of the retrieved data inside of an object called "response"
         .then(function(response) {
-            console.log("queryURL check" + queryURL);
-            console.log("result object check" + response);
             // Assigns response object to global variable
             marsPhoto = response;
         });
     }
 
-
-
-
 //Function Declaration
-
     //Function to initialize all page content
     function FXstart (){
         setTimeout(FXdisplayLaunch, 1500);
@@ -230,51 +189,32 @@ $(".jumbotron").on("click", function(){
         FXdisplayMarsWeather();
         
     };
-
-    //Function to reset page back to location selection
-    function FXresest (){
-
-
-    };
-
     // Writes launch button to page after 1 second
     function FXdisplayLaunch () {
         document.getElementById("launch").style.visibility = "visible";
     }
-
     //Determine weather location
         //Write weather options to DOM
         function FXweatherPrint (){
-
         };
-
     //Write collected info to DOM
     function FXwriteFacts (){
-
         //write weather info
-
-
         $("#local-weather").html(
         "<p> Wind Speed: " +localWeather.wind.speed + " Kilometers per hour</p>" +
         "<p> Temp: " + Math.floor(localWeather.main.temp -273.15) + " Celcius </p>" +
         "<p> Conditions: " + localWeather.weather[0].main + "</p>"
         );
-
         //write mars info
-
         FXcomputeMarsMonth();
-
         $("#mars-weather").html(
         "<p> Martian Month: " + marsMonth + " </p>" +
         "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + " Celcius </p>" +
         "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
         );
     };
-
     function FXcomputeMarsMonth(){
-
         var marsCalendar = ["Sagittarius","Dhanus","Capricornus", "Makara", "Aquarius","Kumbha", "Pisces", "Mina", "Aries", "Mesha", "Taurus", "Rishabha", "Gemini", "Mithuna", "Cancer", "Karka", "Leo", "Simha", "Virgo", "Kanya", "Libra", "Tula", "Scorpius", "Vrishika"]
-
         if (marsWeather.season == "Month 1"){
             marsMonth = marsCalendar[0];
         }
@@ -347,16 +287,11 @@ $(".jumbotron").on("click", function(){
         else if (marsWeather.season == "Month 24"){
             marsMonth = marsCalendar[23];
         }
-
-
-
     };
-
     //Compute delta
     function FXdelta () {
         //compute deltaTemp
         var deltaTemp = Math.floor((localWeather.main.temp - 273.15) - ((marsWeather.min_temp + marsWeather.max_temp)/2));
-
         if (deltaTemp <= 15) {
             $("#compare-temp").append("<p> Wow, it's really cold out where you're at, Antarctic winter cold. Even so, it's still colder on Mars, by the same degree of warmth as a warm spring day. </p>");
         }
@@ -375,12 +310,9 @@ $(".jumbotron").on("click", function(){
         else if (deltaTemp > 85) {
             $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the differnce between an ice cube and a pot of boiling water. </ul>");
         }
-
         //compute deltaWeather
-
         var marsAtmo = marsWeather.atmo_opacity
-        var localAtmo = localWeather.weather[0].main
-        
+        var localAtmo = localWeather.weather[0].main      
         if (localAtmo == "Clouds" && marsAtmo == "Cloudy" ) {
         $("#compare-weather").append("<p> There's cloud cover on mars today, just like home. However I bet your clouds aren't made of iron filings moving at 60 miles an hour. </p>");
         $(".weather-image").append("<img src='assets/images/mars-cloud.jpg' width=300px>");
@@ -417,16 +349,9 @@ $(".jumbotron").on("click", function(){
         $("#compare-weather").append("<p>Earth weather can be wild and varried, but at least your blood isn't likely to freeze in 30 seconds if you walk outside.</p>");
         $(".weather-image").append("<img src='assets/images/mars-ice.jpg' width=300px>");
         };
-
-        ;
-
-
-        //compute deltaSeason
-
-        //initialize FXdeltaWrite
+    //initialize FXdeltaWrite
         FXwriteFacts();
     };
-
     //howler player functions//
     $(function(){
         var sound1=new Howl({
@@ -486,16 +411,6 @@ $(".jumbotron").on("click", function(){
             music.volume(vol);
 	});
 });
-
-
 //Initialize
-
 FXstart();
-
-
-
-
-
-
-
 });
