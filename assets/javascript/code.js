@@ -133,28 +133,28 @@ $(".jumbotron").on("click", function(){
 //AJAX call functions
 
     // Geolocation IP API call function
-    // function FXweatherGeolocation () {
-    //     // The URL to query the ip-API
-    //     var queryURL = "http://ip-api.com/json";
+    function FXweatherGeolocation () {
+        // The URL to query the ip-API
+        var queryURL = "http://ip-api.com/json";
 
-    //     // AJAX call to ip-API
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     })
-    //     // Stores all of the retrieved data inside of an object called "response"
-    //     .then(function(response) {
-    //         console.log("queryURL check: " + queryURL);
-    //         console.log("result object check: " + response);
-    //         // Assigns response object to global variable     
-    //         localLocation = response;
-    //         console.log("localLocation: " + localLocation);
-    //         console.log("ip-api lat" + localLocation.lat);
-    //         console.log("ip-api lon" + localLocation.lon);
-    //         FXdisplayLocalWeather();
-    //     });
+        // AJAX call to ip-API
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        // Stores all of the retrieved data inside of an object called "response"
+        .then(function(response) {
+            console.log("queryURL check: " + queryURL);
+            console.log("result object check: " + response);
+            // Assigns response object to global variable     
+            localLocation = response;
+            console.log("localLocation: " + localLocation);
+            console.log("ip-api lat" + localLocation.lat);
+            console.log("ip-api lon" + localLocation.lon);
+            FXdisplayLocalWeather();
+        });
         
-    // }
+    }
 
     //Open Weather Call function
     function FXdisplayLocalWeather() {
@@ -261,37 +261,37 @@ $(".jumbotron").on("click", function(){
         };
 
         //Geolocate user endpoint
-        function FXweatherGeolocation (){
-            var options = {
-                enableHighAccuracy: false, 
-                timeout: 5000,
-                maximumAge: 0
-            };
+        // function FXweatherGeolocation (){
+        //     var options = {
+        //         enableHighAccuracy: false, 
+        //         timeout: 5000,
+        //         maximumAge: 0
+        //     };
 
-            function success(pos) {
-                var crd = pos.coords;
+        //     function success(pos) {
+        //         var crd = pos.coords;
 
-                console.log('Your current position is: ');
-                console.log(`Latitude : ${crd.latitude}`);
-                console.log(`Longitude: ${crd.longitude}`);
+        //         console.log('Your current position is: ');
+        //         console.log(`Latitude : ${crd.latitude}`);
+        //         console.log(`Longitude: ${crd.longitude}`);
 
-                localLocation = {
-                    lat: crd.latitude,
-                    lon: crd.longitude
-                };
+        //         localLocation = {
+        //             lat: crd.latitude,
+        //             lon: crd.longitude
+        //         };
 
-                console.log("localLocationObject check: " + localLocation);
+        //         console.log("localLocationObject check: " + localLocation);
 
                 
-            };
+        //     };
             
-            function error(err) {
-                console.warn(`ERROR(${err.code}): ${err.message}`);
-            }
+        //     function error(err) {
+        //         console.warn(`ERROR(${err.code}): ${err.message}`);
+        //     }
             
-            navigator.geolocation.getCurrentPosition(success, error, options);
+        //     navigator.geolocation.getCurrentPosition(success, error, options);
             
-        };
+        // };
 
     //Write collected info to DOM
     function FXwriteFacts (){
@@ -472,7 +472,7 @@ $(".jumbotron").on("click", function(){
     //howler player functions//
     $(function(){
         var sound1=new Howl({
-        src: ["assets/audio/Launch.mp3"],
+        src: ["assets/audio/RingTone01_Longer.mp3"],
         volume: 0.8
         });
         $("#launch").on("click", function(){
@@ -499,7 +499,7 @@ $(".jumbotron").on("click", function(){
     });            
     $(function(){
         var music=new Howl({
-            src: ["assets/audio/How's The Weather Song and Cartoon for Kids.mp3"],
+            src: ["assets/audio/CycloneCountry.mp3"],
             volume: 0.5
         });
         $("#howler-play").on("click", function(){
