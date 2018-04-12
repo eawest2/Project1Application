@@ -370,10 +370,10 @@ $(".jumbotron").on("click", function(){
     });
     $(function(){
         var sound2=new Howl({
-        src: ["assets/audio/earth001.mp3"],
+        src: ["assets/audio/Beam Me Up Scotty.mp3"],
         volume: 0.8
         });
-        $("#somewhere1").on("click", function(){
+        $("#curiosity").on("click", function(){
         sound2.play();
         });  
     });
