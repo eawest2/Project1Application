@@ -472,7 +472,7 @@ $(".jumbotron").on("click", function(){
     //howler player functions//
     $(function(){
         var sound1=new Howl({
-        src: ["assets/audio/RingTone01_Longer.mp3"],
+        src: ["assets/audio/Launch.mp3"],
         volume: 0.8
         });
         $("#launch").on("click", function(){
@@ -499,7 +499,7 @@ $(".jumbotron").on("click", function(){
     });            
     $(function(){
         var music=new Howl({
-            src: ["assets/audio/CycloneCountry.mp3"],
+            src: ["assets/audio/How's The Weather Song and Cartoon for Kids.mp3"],
             volume: 0.5
         });
         $("#howler-play").on("click", function(){
