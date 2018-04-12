@@ -16,6 +16,7 @@ $("#launch").on("click", function(){
                     <div class="card-body local-weather-style">
                         <h4 class="card-title"> Local Weather </h4>
                         <hr>
+                        <div class="earth-image"></div>
                         <div id="local-weather">
                             
                         </div>
@@ -28,6 +29,7 @@ $("#launch").on("click", function(){
                     <div class="card-body mars-weather-style" >
                         <h4 class="card-title"> Mars Weather </h4>
                         <hr>
+                        <div class="mars-image"></div>
                         <div id= "mars-weather">
                         </div>
                     </div>
@@ -200,13 +202,17 @@ $(".jumbotron").on("click", function(){
     //Write collected info to DOM
     function FXwriteFacts (){
         //write weather info
+
+        $(".earth-image").append("<img src='assets/images/earth-globe.jpg' width=160px>");
         $("#local-weather").html(
-        "<p> Wind Speed: " +localWeather.wind.speed + " Kilometers per hour</p>" +
+        "<p> Wind Speed: " +localWeather.wind.speed + " kph</p>" +
         "<p> Temp: " + Math.floor(localWeather.main.temp -273.15) + " Celcius </p>" +
         "<p> Conditions: " + localWeather.weather[0].main + "</p>"
         );
         //write mars info
         FXcomputeMarsMonth();
+
+        $(".mars-image").append("<img src='assets/images/mars-globe.jpg' width=150px>");
         $("#mars-weather").html(
         "<p> Martian Month: " + marsMonth + " </p>" +
         "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + " Celcius </p>" +
