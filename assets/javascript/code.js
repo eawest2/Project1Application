@@ -50,7 +50,6 @@ $("#launch").on("click", function(){
                 </div>
             </div>
         </div>`
-        // <button class="btn btn-default" id="relaunch">Re-Launch</button>
     );
     FXdelta();
 });
@@ -107,28 +106,17 @@ $(".jumbotron").on("click", function(){
             color: "white"
         },
     };
-
-    // ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg",]
+	
     var rand = Math.floor(Math.random()*10)+1;
     var elementSelect = "image" + rand
     console.log(elementSelect);
     var imageSelect = images[elementSelect].address;
     var colorSelect = images[elementSelect].color;
-    // $(".jumbotron").css("background-image", "url('../images/" + imageSelect + ".jpg')");
     $(".jumbotron").css("background-image", "url('assets/images/" + imageSelect +"')");
     $(".display-4").css("color", colorSelect);
     $("#colorChange").css("color", colorSelect);
 
 });
-
-// $("#relaunch").on("click", function(){
-//     console.log("hi");
-//     // $("#main-content").html(
-//     //     `<button class="btn btn-primary btn-lg" id="launch">Launch</button>`
-//     // );
-// });
-
-
 
 //AJAX call functions
 
@@ -260,39 +248,6 @@ $(".jumbotron").on("click", function(){
 
         };
 
-        //Geolocate user endpoint
-        // function FXweatherGeolocation (){
-        //     var options = {
-        //         enableHighAccuracy: false, 
-        //         timeout: 5000,
-        //         maximumAge: 0
-        //     };
-
-        //     function success(pos) {
-        //         var crd = pos.coords;
-
-        //         console.log('Your current position is: ');
-        //         console.log(`Latitude : ${crd.latitude}`);
-        //         console.log(`Longitude: ${crd.longitude}`);
-
-        //         localLocation = {
-        //             lat: crd.latitude,
-        //             lon: crd.longitude
-        //         };
-
-        //         console.log("localLocationObject check: " + localLocation);
-
-                
-        //     };
-            
-        //     function error(err) {
-        //         console.warn(`ERROR(${err.code}): ${err.message}`);
-        //     }
-            
-        //     navigator.geolocation.getCurrentPosition(success, error, options);
-            
-        // };
-
     //Write collected info to DOM
     function FXwriteFacts (){
 
@@ -314,9 +269,6 @@ $(".jumbotron").on("click", function(){
         "<p> Temp: " + ((marsWeather.min_temp + marsWeather.max_temp)/2) + " Celcius </p>" +
         "<p> Conditions: " + marsWeather.atmo_opacity + "</p>"
         );
-
-        //write mars photo
-
     };
 
     function FXcomputeMarsMonth(){
