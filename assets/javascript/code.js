@@ -203,7 +203,7 @@ $(".jumbotron").on("click", function(){
     function FXwriteFacts (){
         //write weather info
 
-        $(".earth-image").append("<img src='assets/images/earth-globe.jpg' width=160px>");
+        $(".earth-image").append("<img src='assets/images/earth-globe.jpg' width=150px>");
         $("#local-weather").html(
         "<p> Wind Speed: " +localWeather.wind.speed + " kph</p>" +
         "<p> Temp: " + Math.floor(localWeather.main.temp -273.15) + " Celcius </p>" +
