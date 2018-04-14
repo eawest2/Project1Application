@@ -105,7 +105,6 @@ $(".jumbotron").on("click", function(){
     $(".jumbotron").css("background-image", "url('assets/images/" + imageSelect +"')");
     $(".display-4").css("color", colorSelect);
     $("#colorChange").css("color", colorSelect);
-
 });
 
 //AJAX call functions
@@ -171,7 +170,6 @@ $(".jumbotron").on("click", function(){
         setTimeout(FXdisplayLaunch, 1500);
         FXweatherGeolocation();
         FXdisplayMarsWeather();
-        
     };
     // Writes launch button to page after 1 second
     function FXdisplayLaunch () {
@@ -184,7 +182,6 @@ $(".jumbotron").on("click", function(){
     //Write collected info to DOM
     function FXwriteFacts (){
         //write weather info
-
         $(".earth-image").append("<img src='assets/images/earth-globe.jpg' width=150px>");
         $("#local-weather").html(
         "<p> Wind Speed: " +localWeather.wind.speed + " kph</p>" +
@@ -193,7 +190,6 @@ $(".jumbotron").on("click", function(){
         );
         //write mars info
         FXcomputeMarsMonth();
-
         $(".mars-image").append("<img src='assets/images/mars-globe.jpg' width=150px>");
         $("#mars-weather").html(
         "<p> Martian Month: " + marsMonth + " </p>" +
@@ -284,19 +280,19 @@ $(".jumbotron").on("click", function(){
             $("#compare-temp").append("<p> Wow, it's really cold out where you're at, Antarctic winter cold. Even so, it's still colder on Mars, by the same degree of warmth as a warm spring day. </p>");
         }
         else if (deltaTemp > 15 && deltaTemp <= 25) {
-            $("#compare-temp").append("<p> It's pretty cold out today. The difference between your temperature and martian temperature however is the difference in average temperature in New York City, and McMurdo Sound in Antacrtica. </p>");
+            $("#compare-temp").append("<p> It's pretty cold out today. The difference between your temperature and martian temperature however is the difference in average temperature in New York City, and McMurdo Sound in Antarctica. </p>");
         }
         else if (deltaTemp > 25 && deltaTemp <= 45) {
-            $("#compare-temp").append("<p> The difference in temperature between you and Mars is the same as the difference in temperature between the Saharah desert in summer, and the Antarctic winter. </p>");
+            $("#compare-temp").append("<p> The difference in temperature between you and Mars is the same as the difference in temperature between the Sahara desert in summer, and the Antarctic winter. </p>");
         }
         else if (deltaTemp > 45 && deltaTemp <= 65) {
             $("#compare-temp").append("<p> The difference in temperature between you and Mars is the same as the difference between a frozen steak, and one cooked to well-done. </p>");
         }
         else if (deltaTemp > 65 && deltaTemp <= 85) {
-            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the differnce between a cup of hot coffee and a ice cube. </ul>");
+            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the difference between a cup of hot coffee and a ice cube. </ul>");
         }
         else if (deltaTemp > 85) {
-            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the differnce between an ice cube and a pot of boiling water. </ul>");
+            $("#compare-temp").append("<ul> The difference in temperature between you and Mars is the same as the difference between an ice cube and a pot of boiling water. </ul>");
         }
         //compute deltaWeather
         var marsAtmo = marsWeather.atmo_opacity
@@ -318,7 +314,7 @@ $(".jumbotron").on("click", function(){
         $(".weather-image").append("<img src='assets/images/dry-mars.jpg' width=300px>");
         }
         else if (localAtmo == "Snow") {
-        $("#compare-weather").append("<p>Snow can be cold and upsetting, but ultimately it repleneshes the ground water. Meanwhile, on Mars, the only snow is frozen Carbon Dioxide crystals at the poles and thus a minimum of -78.5 degrees celcius.</p>");
+        $("#compare-weather").append("<p>Snow can be cold and upsetting, but ultimately it repleneshes the ground water. Meanwhile, on Mars, the only snow is frozen Carbon Dioxide crystals at the poles and thus a minimum of -78.5 degrees Celcius.</p>");
         $(".weather-image").append("<img src='assets/images/antartica.jpg' width=300px>");
         }
         else if (localAtmo == "Extreme") {
@@ -334,12 +330,13 @@ $(".jumbotron").on("click", function(){
         $(".weather-image").append("<img src='assets/images/mars-cloud.jpg' width=300px>");
         }
         else {
-        $("#compare-weather").append("<p>Earth weather can be wild and varried, but at least your blood isn't likely to freeze in 30 seconds if you walk outside.</p>");
+        $("#compare-weather").append("<p>Earth weather can be wild and varied, but at least your blood isn't likely to freeze in 30 seconds if you walk outside.</p>");
         $(".weather-image").append("<img src='assets/images/mars-ice.jpg' width=300px>");
         };
     //initialize FXdeltaWrite
         FXwriteFacts();
     };
+    
     //howler player functions//
     $(function(){
         var sound1=new Howl({
