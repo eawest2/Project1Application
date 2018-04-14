@@ -394,8 +394,9 @@ $(".jumbotron").on("click", function(){
                 vol=0;
             }
             music.volume(vol);
-	});
-});
+        });
+    });
+    
 //Initialize
 FXstart();
 });
