@@ -164,24 +164,6 @@ $(".jumbotron").on("click", function(){
             // Testing responses
         });
     }
-    //Mars photo call function
-    function FXdisplayMarsImage() {
-        // This is our API key and variables for the Mars Photos queryURL
-        var currentSOL = "";
-        var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
-        var queryURL = 
-        "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=" + currentSOL + "&api_key=" + APIKey;
-        // AJAX call to Mars Photos API
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-        // Stores all of the retrieved data inside of an object called "response"
-        .then(function(response) {
-            // Assigns response object to global variable
-            marsPhoto = response;
-        });
-    }
 
 //Function Declaration
     //Function to initialize all page content
