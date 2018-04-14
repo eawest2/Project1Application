@@ -112,7 +112,7 @@ $(".jumbotron").on("click", function(){
     // Geolocation IP API call function
     function FXweatherGeolocation () {
         // The URL to query the ip-API
-        var queryURL = "http://ip-api.com/json";
+        var queryURL = "https://ipapi.co/json/";
         // AJAX call to ip-API
         $.ajax({
             url: queryURL,
@@ -122,8 +122,8 @@ $(".jumbotron").on("click", function(){
         .then(function(response) {
             // Assigns response object to global variable     
             localLocation = response;
-            console.log("ip-api lat" + localLocation.lat);
-            console.log("ip-api lon" + localLocation.lon);
+            console.log("ip-api lat" + localLocation.latitude);
+            console.log("ip-api lon" + localLocation.longitude);
             FXdisplayLocalWeather();
         });
         
@@ -134,7 +134,7 @@ $(".jumbotron").on("click", function(){
         // This is our API key and variables for the queryURL
         var APIKey = "7d2ff8f5647ce6dbd5231ca3f107d20b";
         // The URL to query the database
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + localLocation.lat + "&lon=" + localLocation.lon + "&appid=" + APIKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + localLocation.latitude + "&lon=" + localLocation.longitude + "&appid=" + APIKey;
         // AJAX call to the OpenWeatherMap API
         $.ajax({
             url: queryURL,
